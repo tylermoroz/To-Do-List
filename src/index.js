@@ -1,12 +1,10 @@
-import './style.css';
+const project = (title, description, dueDate, priority, notes, checklist) => {
 
-function component() {
-    let element = document.createElement('div');
-
-    element.textContent = "hello world";
-    element.classList.add("hello");
-    
-    return element;
-}
-
-document.body.appendChild(component());
+    return { title, 
+             description, 
+             dueDate, 
+             priority, 
+             notes, 
+             checklist 
+            };
+};
