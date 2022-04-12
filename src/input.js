@@ -32,16 +32,34 @@ const inputForm = () => {
     timeInput.setAttribute('id', 'time');
     timeInput.setAttribute('name', 'time');
 
+    //create the input element for the todo priority
     const priority = document.createElement('div');
     const priorityLabel = document.createElement('label');
     const priorityInput = document.createElement('input');
+    priorityLabel.setAttribute('for', 'priority');
+    priorityLabel.textContent = 'Priority:';
+    priorityInput.setAttribute('type', 'number');
+    priorityInput.setAttribute('id', 'priority');
+    priorityInput.setAttribute('name', 'priority');
 
+    //create the input element for the notes
     const notes = document.createElement('div');
     const notesLabel = document.createElement('label');
     const notesInput = document.createElement('input');
+    notesLabel.setAttribute('for', 'notes');
+    notesLabel.textContent = 'Notes:';
+    notesInput.setAttribute('type', 'text');
+    notesInput.setAttribute('id', 'notes');
+    notesInput.setAttribute('name', 'notes');
 
+    //create the input element for the checklist
     const checklist = document.createElement('div');
     const checklistLabel = document.createElement('label');
     const checklistInput = document.createElement('input');
+    checklistLabel.setAttribute('for', 'checklist');
+    checklistLabel.textContent = 'Complete';
+    checklistInput.setAttribute('type', 'checkbox');
+    checklistInput.setAttribute('id', 'checklist');
+    checklistInput.setAttribute('name', 'checklist');
 
 }
