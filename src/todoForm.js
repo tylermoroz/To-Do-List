@@ -30,6 +30,8 @@ const formCreate = () => {
   const incompleteLabel = document.createElement("label");
   const incompleteInput = document.createElement("input");
 
+  formDiv.setAttribute("id", "form-div");
+
   title.setAttribute("id", "todo-title");
   titleLabel.setAttribute("for", "title");
   titleLabel.textContent = "Title:";
