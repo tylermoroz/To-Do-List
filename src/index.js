@@ -1,3 +1,5 @@
+import { formCreate } from "./todoForm";
+
 const content = document.querySelector("#content");
 
 const toDos = (title, description, dueDate, priority, notes, checklist) => {
@@ -12,6 +14,8 @@ const newToDo = toDos(
   "Bring water, gym bag with change-out, earbuds, and drink preworkout beforehand.",
   "N/A"
 );
+
+formCreate();
 
 console.log(newToDo);
 

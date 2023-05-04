@@ -1,4 +1,4 @@
-import content from "./index.js";
+import { content } from "./index.js";
 
 const formCreate = () => {
   const formDiv = document.createElement("div");
@@ -28,6 +28,13 @@ const formCreate = () => {
   const checklistLabel = document.createElement("label");
   const checklistInput = document.createElement("input");
 
+  title.setAttribute("id", "form-title");
+  titleLabel.setAttribute("for", "title");
+  titleLabel.textContent = "Title:";
+  titleInput.setAttribute("type", "text");
+  titleInput.setAttribute("name", "title");
+  titleInput.setAttribute("id", "title");
+
   content.appendChild(formDiv);
   formDiv.appendChild(form);
   form.appendChild(title);
@@ -48,6 +55,8 @@ const formCreate = () => {
   notes.appendChild(notesInput);
   checklist.appendChild(checklistLabel);
   checklist.appendChild(checklistInput);
+
+  return { content };
 };
 
 export { formCreate };
