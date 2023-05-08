@@ -10,7 +10,8 @@ body {
 }
 
 #form-div {
-  border: 1px solid black;
+  border: 3px solid black;
+  border-radius: 15px;
   margin: 10px;
   padding: 10px;
   width: 300px;
@@ -61,6 +62,14 @@ form #todo-notes {
 
 form #todo-checklist {
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
+  justify-content: space-evenly;
   padding: 5px;
+  gap: 20px;
+}
+
+form #todo-checklist div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
