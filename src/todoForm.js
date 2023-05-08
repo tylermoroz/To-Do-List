@@ -1,4 +1,5 @@
 import { content } from "./index.js";
+import "./style.css";
 
 const formCreate = () => {
   const formDiv = document.createElement("div");
