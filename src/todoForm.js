@@ -26,8 +26,10 @@ const formCreate = () => {
   const notesInput = document.createElement("textarea");
 
   const checklist = document.createElement("div");
+  const completeDiv = document.createElement("div");
   const completeLabel = document.createElement("label");
   const completeInput = document.createElement("input");
+  const incompleteDiv = document.createElement("div");
   const incompleteLabel = document.createElement("label");
   const incompleteInput = document.createElement("input");
 
@@ -75,13 +77,13 @@ const formCreate = () => {
   checklist.setAttribute("id", "todo-checklist");
   completeLabel.setAttribute("for", "complete");
   completeLabel.textContent = "Complete";
-  completeInput.setAttribute("type", "checkbox");
+  completeInput.setAttribute("type", "radio");
   completeInput.setAttribute("name", "complete");
   completeInput.setAttribute("id", "complete");
   completeInput.setAttribute("value", "complete");
   incompleteLabel.setAttribute("for", "incomplete");
   incompleteLabel.textContent = "Incomplete";
-  incompleteInput.setAttribute("type", "checkbox");
+  incompleteInput.setAttribute("type", "radio");
   incompleteInput.setAttribute("name", "incomplete");
   incompleteInput.setAttribute("id", "incomplete");
   incompleteInput.setAttribute("value", "complete");
@@ -104,10 +106,12 @@ const formCreate = () => {
   priority.appendChild(priorityInput);
   notes.appendChild(notesLabel);
   notes.appendChild(notesInput);
-  checklist.appendChild(completeInput);
-  checklist.appendChild(completeLabel);
-  checklist.appendChild(incompleteInput);
-  checklist.appendChild(incompleteLabel);
+  checklist.appendChild(completeDiv);
+  checklist.appendChild(incompleteDiv);
+  completeDiv.appendChild(completeInput);
+  completeDiv.appendChild(completeLabel);
+  incompleteDiv.appendChild(incompleteInput);
+  incompleteDiv.appendChild(incompleteLabel);
 
   return { content };
 };
