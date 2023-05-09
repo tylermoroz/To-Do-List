@@ -1,4 +1,5 @@
 import { content } from "./index.js";
+import { newTodo } from "./createTodo.js";
 import "./style.css";
 
 const formCreate = () => {
@@ -26,12 +27,10 @@ const formCreate = () => {
   const notesInput = document.createElement("textarea");
 
   const checklist = document.createElement("div");
-  const completeDiv = document.createElement("div");
   const completeLabel = document.createElement("label");
   const completeInput = document.createElement("input");
-  const incompleteDiv = document.createElement("div");
-  const incompleteLabel = document.createElement("label");
-  const incompleteInput = document.createElement("input");
+
+  const submit = document.createElement("button");
 
   formDiv.setAttribute("id", "form-div");
 
@@ -77,16 +76,13 @@ const formCreate = () => {
   checklist.setAttribute("id", "todo-checklist");
   completeLabel.setAttribute("for", "complete");
   completeLabel.textContent = "Complete";
-  completeInput.setAttribute("type", "radio");
+  completeInput.setAttribute("type", "checkbox");
   completeInput.setAttribute("name", "complete");
   completeInput.setAttribute("id", "complete");
   completeInput.setAttribute("value", "complete");
-  incompleteLabel.setAttribute("for", "incomplete");
-  incompleteLabel.textContent = "Incomplete";
-  incompleteInput.setAttribute("type", "radio");
-  incompleteInput.setAttribute("name", "incomplete");
-  incompleteInput.setAttribute("id", "incomplete");
-  incompleteInput.setAttribute("value", "complete");
+
+  submit.setAttribute("id", "submit");
+  submit.textContent = "submit";
 
   content.appendChild(formDiv);
   formDiv.appendChild(form);
@@ -96,6 +92,7 @@ const formCreate = () => {
   form.appendChild(priority);
   form.appendChild(notes);
   form.appendChild(checklist);
+  form.appendChild(submit);
   title.appendChild(titleLabel);
   title.appendChild(titleInput);
   description.appendChild(descriptionLabel);
@@ -106,14 +103,15 @@ const formCreate = () => {
   priority.appendChild(priorityInput);
   notes.appendChild(notesLabel);
   notes.appendChild(notesInput);
-  checklist.appendChild(completeDiv);
-  checklist.appendChild(incompleteDiv);
-  completeDiv.appendChild(completeInput);
-  completeDiv.appendChild(completeLabel);
-  incompleteDiv.appendChild(incompleteInput);
-  incompleteDiv.appendChild(incompleteLabel);
+  checklist.appendChild(completeInput);
+  checklist.appendChild(completeLabel);
 
-  return { content };
+  submit.addEventListener("click", newTodo);
+
+  return {
+    content,
+    submit,
+  };
 };
 
 export { formCreate };
