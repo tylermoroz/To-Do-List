@@ -1,3 +1,5 @@
+import { submit } from "./todoForm.js";
+
 const todoArray = [];
 
 const Todo = (title, description, dueDate, priority, notes, checklist) => {
@@ -17,4 +19,8 @@ const newTodo = (event) => {
   console.log(todoArray);
 };
 
-export { newTodo };
+const displayTodo = () => {
+  submit.addEventListener("click", newTodo);
+};
+
+export { displayTodo };
