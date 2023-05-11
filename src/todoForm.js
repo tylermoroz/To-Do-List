@@ -110,4 +110,10 @@ const formCreate = () => {
   };
 };
 
-export { formCreate, submit };
+const formClear = () => {
+  submit.addEventListener("click", () => {
+    form.reset();
+  });
+};
+
+export { formCreate, submit, formClear };
