@@ -1,11 +1,11 @@
 import { formCreate } from "./todoForm";
 import { formClear } from "./todoForm";
-import { displayTodo } from "./createTodo.js";
+import { createTodo } from "./createTodo.js";
 
 const content = document.querySelector("#content");
 
 formCreate();
-displayTodo();
+createTodo();
 formClear();
 
 export { content };

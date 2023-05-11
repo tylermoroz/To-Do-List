@@ -24,7 +24,7 @@ const notes = document.createElement("div");
 const notesLabel = document.createElement("label");
 const notesInput = document.createElement("textarea");
 
-const checklist = document.createElement("div");
+const complete = document.createElement("div");
 const completeLabel = document.createElement("label");
 const completeInput = document.createElement("input");
 
@@ -71,13 +71,12 @@ notesInput.setAttribute("id", "notes");
 notesInput.setAttribute("rows", "5");
 notesInput.setAttribute("cols", "33");
 
-checklist.setAttribute("id", "todo-checklist");
+complete.setAttribute("id", "todo-checklist");
 completeLabel.setAttribute("for", "complete");
 completeLabel.textContent = "Complete";
 completeInput.setAttribute("type", "checkbox");
 completeInput.setAttribute("name", "complete");
 completeInput.setAttribute("id", "complete");
-completeInput.setAttribute("value", "complete");
 
 submit.setAttribute("id", "submit");
 submit.textContent = "submit";
@@ -90,7 +89,7 @@ const formCreate = () => {
   form.appendChild(dueDate);
   form.appendChild(priority);
   form.appendChild(notes);
-  form.appendChild(checklist);
+  form.appendChild(complete);
   form.appendChild(submit);
   title.appendChild(titleLabel);
   title.appendChild(titleInput);
@@ -102,8 +101,8 @@ const formCreate = () => {
   priority.appendChild(priorityInput);
   notes.appendChild(notesLabel);
   notes.appendChild(notesInput);
-  checklist.appendChild(completeInput);
-  checklist.appendChild(completeLabel);
+  complete.appendChild(completeInput);
+  complete.appendChild(completeLabel);
 
   return {
     content,

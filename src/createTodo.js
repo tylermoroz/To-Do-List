@@ -2,8 +2,8 @@ import { submit } from "./todoForm.js";
 
 const todoArray = [];
 
-const Todo = (title, description, dueDate, priority, notes, checklist) => {
-  return { title, description, dueDate, priority, notes, checklist };
+const Todo = (title, description, dueDate, priority, notes, complete) => {
+  return { title, description, dueDate, priority, notes, complete };
 };
 
 const newTodo = (event) => {
@@ -14,13 +14,13 @@ const newTodo = (event) => {
   todo.dueDate = document.getElementById("due-date").value;
   todo.priority = document.getElementById("priority").value;
   todo.notes = document.getElementById("notes").value;
-  todo.checklist = document.getElementById("complete").value;
+  todo.complete = document.getElementById("complete").checked;
   todoArray.push(todo);
-  console.log(todoArray);
+  console.log({ todoArray });
 };
 
-const displayTodo = () => {
+const createTodo = () => {
   submit.addEventListener("click", newTodo);
 };
 
-export { displayTodo };
+export { createTodo };
