@@ -1,4 +1,3 @@
-import { content } from "./index.js";
 import "./style.css";
 
 const formDiv = document.createElement("div");
@@ -82,7 +81,6 @@ submit.setAttribute("id", "submit");
 submit.textContent = "submit";
 
 const formCreate = () => {
-  content.appendChild(formDiv);
   formDiv.appendChild(form);
   form.appendChild(title);
   form.appendChild(description);
@@ -103,10 +101,6 @@ const formCreate = () => {
   notes.appendChild(notesInput);
   complete.appendChild(completeInput);
   complete.appendChild(completeLabel);
-
-  return {
-    content,
-  };
 };
 
 const formClear = () => {
@@ -115,4 +109,4 @@ const formClear = () => {
   });
 };
 
-export { formCreate, submit, formClear };
+export { formCreate, formDiv, submit, formClear };

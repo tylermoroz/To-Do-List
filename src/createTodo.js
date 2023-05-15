@@ -1,4 +1,5 @@
 import { submit } from "./todoForm.js";
+import { displayTodo } from "./displayTodo.js";
 
 const todoArray = [];
 
@@ -16,11 +17,11 @@ const newTodo = (event) => {
   todo.notes = document.getElementById("notes").value;
   todo.complete = document.getElementById("complete").checked;
   todoArray.push(todo);
-  console.log({ todoArray });
 };
 
 const createTodo = () => {
   submit.addEventListener("click", newTodo);
+  submit.addEventListener("click", displayTodo);
 };
 
-export { createTodo };
+export { createTodo, todoArray };
