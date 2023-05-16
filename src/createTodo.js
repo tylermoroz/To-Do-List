@@ -1,7 +1,7 @@
 import { submit } from "./todoForm.js";
 import { displayTodo } from "./displayTodo.js";
 
-const todoArray = [];
+let todoArray = [];
 
 const Todo = (title, description, dueDate, priority, notes, complete) => {
   return { title, description, dueDate, priority, notes, complete };
@@ -9,6 +9,7 @@ const Todo = (title, description, dueDate, priority, notes, complete) => {
 
 const newTodo = (event) => {
   event.preventDefault();
+  todoArray = [];
   let todo = Todo();
   todo.title = document.getElementById("title").value;
   todo.description = document.getElementById("description").value;
