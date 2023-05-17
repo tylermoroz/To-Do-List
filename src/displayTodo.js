@@ -36,7 +36,7 @@ const displayTodo = () => {
     todoObject.appendChild(title);
     todoObject.appendChild(description);
     todoObject.appendChild(dueDate);
-    todoObject.appendChild(priority);
+    // todoObject.appendChild(priority);
     todoObject.appendChild(notes);
     todoObject.appendChild(complete);
     console.log(todoObject, todoArray[i]);
