@@ -17,6 +17,10 @@ const dueDateInput = document.createElement("input");
 
 const priority = document.createElement("div");
 const priorityLabel = document.createElement("label");
+const priorityLevelDiv = document.createElement("div");
+const priorityLevelLow = document.createElement("p");
+const priorityLevelMid = document.createElement("p");
+const priorityLevelHigh = document.createElement("p");
 const priorityInput = document.createElement("input");
 
 const notes = document.createElement("div");
@@ -56,11 +60,15 @@ dueDateInput.setAttribute("id", "due-date");
 priority.setAttribute("id", "todo-priority");
 priorityLabel.setAttribute("for", "priority");
 priorityLabel.textContent = "Priority:";
+priorityLevelDiv.setAttribute("id", "priority-level");
+priorityLevelLow.textContent = "Low";
+priorityLevelMid.textContent = "Medium";
+priorityLevelHigh.textContent = "High";
 priorityInput.setAttribute("type", "range");
 priorityInput.setAttribute("name", "priority");
 priorityInput.setAttribute("id", "priority");
-priorityInput.setAttribute("min", "0");
-priorityInput.setAttribute("max", "2");
+priorityInput.setAttribute("min", "1");
+priorityInput.setAttribute("max", "3");
 
 notes.setAttribute("id", "todo-notes");
 notesLabel.setAttribute("for", "notes");
@@ -96,6 +104,10 @@ const formCreate = () => {
   dueDate.appendChild(dueDateLabel);
   dueDate.appendChild(dueDateInput);
   priority.appendChild(priorityLabel);
+  priority.appendChild(priorityLevelDiv);
+  priorityLevelDiv.appendChild(priorityLevelLow);
+  priorityLevelDiv.appendChild(priorityLevelMid);
+  priorityLevelDiv.appendChild(priorityLevelHigh);
   priority.appendChild(priorityInput);
   notes.appendChild(notesLabel);
   notes.appendChild(notesInput);

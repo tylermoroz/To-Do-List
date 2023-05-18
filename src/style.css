@@ -58,6 +58,12 @@ form #todo-priority {
   padding: 5px;
 }
 
+form #priority-level {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: -15px;
+}
+
 form #todo-notes {
   display: flex;
   flex-direction: column;
@@ -105,4 +111,5 @@ form #todo-checklist {
 
 .todo-object p {
   margin-bottom: -5px;
+  font-style: italic;
 }
