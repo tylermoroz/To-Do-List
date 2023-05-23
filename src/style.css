@@ -115,6 +115,7 @@ form #todo-checklist {
   width: 200px;
   height: fit-content;
   padding: 10px;
+  background-color: white;
 }
 
 .todo-object h3 {
@@ -126,4 +127,10 @@ form #todo-checklist {
 .todo-object p {
   margin-bottom: -5px;
   font-style: italic;
+}
+
+.todo-object button {
+  border-radius: 5px;
+  width: 50%;
+  align-self: center;
 }

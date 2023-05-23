@@ -1,5 +1,5 @@
-import { submit } from "./todoForm.js";
-import { displayTodo } from "./displayTodo.js";
+import { submit, completeInput } from "./todoForm.js";
+import { displayTodo, resetChildNodes } from "./displayTodo.js";
 
 let todoArray = [];
 
@@ -7,20 +7,28 @@ const Todo = (title, description, dueDate, priority, notes, complete) => {
   return { title, description, dueDate, priority, notes, complete };
 };
 
+const completeValue = (todo) => {
+  if (completeInput.checked) {
+    return (todo.complete = "complete");
+  } else {
+    return (todo.complete = "incomplete");
+  }
+};
+
 const newTodo = (event) => {
   event.preventDefault();
-  todoArray = [];
   let todo = Todo();
   todo.title = document.getElementById("title").value;
   todo.description = document.getElementById("description").value;
   todo.dueDate = document.getElementById("due-date").value;
   todo.priority = document.getElementById("priority").value;
   todo.notes = document.getElementById("notes").value;
-  todo.complete = document.getElementById("complete").checked;
+  todo.complete = completeValue(todo);
   todoArray.push(todo);
 };
 
 const createTodo = () => {
+  submit.addEventListener("click", resetChildNodes);
   submit.addEventListener("click", newTodo);
   submit.addEventListener("click", displayTodo);
 };

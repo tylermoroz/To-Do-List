@@ -21,6 +21,12 @@ const priorityLevel = (i) => {
   }
 };
 
+const resetChildNodes = () => {
+  while (todoDiv.firstChild) {
+    todoDiv.removeChild(todoDiv.firstChild);
+  }
+};
+
 const displayTodo = () => {
   for (let i = 0; i < todoArray.length; i++) {
     const todoObject = document.createElement("div");
@@ -29,7 +35,7 @@ const displayTodo = () => {
     const description = document.createElement("p");
     const dueDate = document.createElement("p");
     const notes = document.createElement("p");
-    const complete = document.createElement("p");
+    const complete = document.createElement("button");
 
     title.textContent = todoArray[i].title;
     priority.textContent = priorityLevel(i);
@@ -40,6 +46,17 @@ const displayTodo = () => {
 
     todoColor(i, todoObject);
 
+    complete.addEventListener("click", () => {
+      if (todoArray[i].complete == "complete") {
+        todoArray[i].complete = "incomplete";
+        complete.textContent = todoArray[i].complete;
+      } else if (todoArray[i].complete == "incomplete") {
+        todoArray[i].complete = "complete";
+        complete.textContent = todoArray[i].complete;
+      }
+      console.log(todoArray);
+    });
+
     todoObject.classList.add("todo-object");
 
     todoDiv.appendChild(todoObject);
@@ -49,8 +66,8 @@ const displayTodo = () => {
     todoObject.appendChild(dueDate);
     todoObject.appendChild(notes);
     todoObject.appendChild(complete);
-    console.log(todoObject, todoArray[i]);
   }
+  console.log(todoArray);
 };
 
-export { displayTodo };
+export { displayTodo, resetChildNodes };

@@ -126,4 +126,4 @@ const formClear = () => {
   });
 };
 
-export { formCreate, formDiv, submit, formClear };
+export { formCreate, formDiv, submit, completeInput, formClear };
