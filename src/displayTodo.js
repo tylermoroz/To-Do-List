@@ -44,6 +44,9 @@ const displayTodo = () => {
     notes.textContent = todoArray[i].notes;
     complete.textContent = todoArray[i].complete;
 
+    description.setAttribute("id", "description");
+    notes.setAttribute("id", "notes");
+
     todoColor(i, todoObject);
 
     complete.addEventListener("click", () => {

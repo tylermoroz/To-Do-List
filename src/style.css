@@ -104,6 +104,24 @@ form #todo-checklist {
   padding: 10px;
   gap: 20px;
   background: rgba(255, 255, 255, 0.767);
+  overflow-y: scroll;
+}
+
+#todo-div::-webkit-scrollbar {
+  width: 10px;
+}
+
+#todo-div::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255);
+  border-radius: 0 20px 20px 0;
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+
+#todo-div::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 255, 0.664);
+  border-radius: 0 20px 20px 0;
+  border: 2px solid rgb(255, 255, 255);
 }
 
 .todo-object {
@@ -112,7 +130,7 @@ form #todo-checklist {
   display: flex;
   flex-direction: column;
   align-items: left;
-  width: 200px;
+  max-width: 200px;
   height: fit-content;
   padding: 10px;
   background-color: white;
@@ -126,11 +144,15 @@ form #todo-checklist {
 
 .todo-object p {
   margin-bottom: -5px;
-  font-style: italic;
 }
 
 .todo-object button {
   border-radius: 5px;
   width: 50%;
   align-self: center;
+  margin-top: 15px;
+}
+
+.todo-object #description {
+  font-style: italic;
 }
