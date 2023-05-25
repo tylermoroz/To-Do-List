@@ -1,5 +1,3 @@
-import "./style.css";
-
 const formDiv = document.createElement("div");
 const form = document.createElement("form");
 
@@ -95,15 +93,16 @@ submit.textContent = "submit";
 const formCreate = () => {
   formDiv.appendChild(form);
   form.appendChild(title);
-  form.appendChild(priority);
-
-  form.appendChild(description);
   form.appendChild(dueDate);
+  form.appendChild(priority);
+  form.appendChild(description);
   form.appendChild(notes);
   form.appendChild(complete);
   form.appendChild(submit);
   title.appendChild(titleLabel);
   title.appendChild(titleInput);
+  dueDate.appendChild(dueDateLabel);
+  dueDate.appendChild(dueDateInput);
   priority.appendChild(priorityLabel);
   priority.appendChild(priorityLevelDiv);
   priorityLevelDiv.appendChild(priorityLevelLow);
@@ -112,8 +111,6 @@ const formCreate = () => {
   priority.appendChild(priorityInput);
   description.appendChild(descriptionLabel);
   description.appendChild(descriptionInput);
-  dueDate.appendChild(dueDateLabel);
-  dueDate.appendChild(dueDateInput);
   notes.appendChild(notesLabel);
   notes.appendChild(notesInput);
   complete.appendChild(completeInput);

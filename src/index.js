@@ -1,16 +1,19 @@
 import { formCreate, formClear, formDiv } from "./todoForm";
 import { createTodo } from "./createTodo.js";
+import { todoDiv } from "./displayTodo.js";
+import "./style.css";
+import { projectsDiv } from "./projects";
 
 const content = document.querySelector("#content");
-const todoDiv = document.createElement("div");
 
 todoDiv.setAttribute("id", "todo-div");
 
 content.appendChild(formDiv);
+content.appendChild(projectsDiv);
 content.appendChild(todoDiv);
 
 formCreate();
 createTodo();
 formClear();
 
-export { content, todoDiv };
+export { content };

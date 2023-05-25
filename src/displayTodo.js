@@ -1,5 +1,6 @@
 import { todoArray } from "./createTodo.js";
-import { todoDiv } from "./index.js";
+
+const todoDiv = document.createElement("div");
 
 const todoColor = (i, todo) => {
   if (todoArray[i].priority == "1") {
@@ -64,13 +65,13 @@ const displayTodo = () => {
 
     todoDiv.appendChild(todoObject);
     todoObject.appendChild(title);
+    todoObject.appendChild(dueDate);
     todoObject.appendChild(priority);
     todoObject.appendChild(description);
-    todoObject.appendChild(dueDate);
     todoObject.appendChild(notes);
     todoObject.appendChild(complete);
   }
   console.log(todoArray);
 };
 
-export { displayTodo, resetChildNodes };
+export { displayTodo, resetChildNodes, todoDiv };
