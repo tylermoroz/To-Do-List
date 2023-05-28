@@ -41,6 +41,35 @@ body {
   background: rgba(255, 255, 255, 0.767);
 }
 
+#projects-head-div {
+  display: flex;
+  justify-content: space-between;
+  margin: -5px;
+}
+
+#projects-title-div {
+  width: 100%;
+}
+
+#projects-title-div p {
+  font-size: 28px;
+  margin: 0;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: underline;
+}
+
+#projects-button-div {
+  margin-left: -15px;
+}
+
+#projects-add-button {
+  font-weight: 700;
+  height: 25px;
+  width: 25px;
+  font-size: 16px;
+}
+
 form {
   font-weight: bold;
   font-size: 18px;
