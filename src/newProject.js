@@ -36,6 +36,10 @@ const newProject = () => {
   project.title = document.getElementById("project-title").value;
   project.todos = projectTodos;
   projectsArray.push(project);
+  const projectName = document.createElement("p");
+  projectName.textContent = project.title;
+  projectsDiv.removeChild(newProjectFormDiv);
+  projectsDiv.appendChild(projectName);
   console.log(projectsArray);
 };
 
@@ -44,6 +48,7 @@ const addProject = () => {
     if (event.key === "Enter") {
       event.preventDefault();
       newProject();
+      newProjectForm.reset();
     }
   });
 };
