@@ -5,11 +5,9 @@ const projectsButtonDiv = document.createElement("div");
 const projectsDiv = document.createElement("div");
 const title = document.createElement("p");
 const addProjectBtn = document.createElement("button");
-const projectSample = document.createElement("p");
 
 title.textContent = "Projects";
 addProjectBtn.textContent = "+";
-projectSample.textContent = "Sample Project";
 
 projectsContainer.setAttribute("id", "projects-container");
 projectsHeadDiv.setAttribute("id", "projects-head-div");
@@ -24,6 +22,5 @@ projectsHeadDiv.appendChild(projectsTitleDiv);
 projectsHeadDiv.appendChild(projectsButtonDiv);
 projectsTitleDiv.appendChild(title);
 projectsButtonDiv.appendChild(addProjectBtn);
-projectsDiv.appendChild(projectSample);
 
 export { projectsContainer, addProjectBtn, projectsDiv };

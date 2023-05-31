@@ -1,6 +1,11 @@
 import { projectsDiv } from "./projects.js";
 
 const projectsArray = [];
+const projectTodos = [];
+
+const Project = (title, todos) => {
+  return { title, todos };
+};
 
 const newProjectFormDiv = document.createElement("div");
 const newProjectForm = document.createElement("form");
@@ -26,6 +31,21 @@ const newProjectFormCreate = () => {
   projectTitle.appendChild(projectTitleInput);
 };
 
-const newProject = () => {};
+const newProject = () => {
+  let project = Project();
+  project.title = document.getElementById("project-title").value;
+  project.todos = projectTodos;
+  projectsArray.push(project);
+  console.log(projectsArray);
+};
 
-export { newProjectFormCreate };
+const addProject = () => {
+  projectTitleInput.addEventListener("keypress", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      newProject();
+    }
+  });
+};
+
+export { newProjectFormCreate, addProject, projectTodos };

@@ -1,5 +1,6 @@
 import { submit, completeInput } from "./todoForm.js";
 import { displayTodo, resetChildNodes } from "./displayTodo.js";
+import { projectTodos } from "./newProject.js";
 
 let todoArray = [];
 
@@ -27,9 +28,15 @@ const newTodo = (event) => {
   todoArray.push(todo);
 };
 
+const pushToProject = () => {
+  projectTodos.push(todoArray);
+  console.log(projectTodos);
+};
+
 const createTodo = () => {
   submit.addEventListener("click", resetChildNodes);
   submit.addEventListener("click", newTodo);
+  submit.addEventListener("click", pushToProject);
   submit.addEventListener("click", displayTodo);
 };
 
