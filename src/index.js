@@ -3,7 +3,11 @@ import { createTodo } from "./createTodo.js";
 import { todoDiv } from "./displayTodo.js";
 import "./style.css";
 import { projectsContainer, addProjectBtn } from "./projects.js";
-import { addProject, newProjectFormCreate } from "./newProject.js";
+import {
+  addProject,
+  newProjectFormCreate,
+  selectProject,
+} from "./newProject.js";
 
 const content = document.querySelector("#content");
 
@@ -18,5 +22,6 @@ addProject();
 createTodo();
 formClear();
 addProjectBtn.addEventListener("click", newProjectFormCreate);
+// selectProject();
 
 export { content };

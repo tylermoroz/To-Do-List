@@ -1,7 +1,7 @@
 import { projectsDiv } from "./projects.js";
 
 const projectsArray = [];
-const projectTodos = [];
+let projectTodos = [];
 
 const Project = (title, todos) => {
   return { title, todos };
@@ -41,6 +41,9 @@ const newProject = () => {
   projectsDiv.removeChild(newProjectFormDiv);
   projectsDiv.appendChild(projectName);
   console.log(projectsArray);
+  // projectName.addEventListener("click", () => {
+  //   projectName.classList.add("active");
+  // });
 };
 
 const addProject = () => {
@@ -52,5 +55,15 @@ const addProject = () => {
     }
   });
 };
+
+// const selectProject = () => {
+//   const nodeList = document.getElementById("projects-div").childNodes;
+//   nodeList.addEventListener("click", () => {
+//     for (let i = 0; i <= nodeList.length; i++) {
+//       childNodes.classList.remove("active");
+//     }
+//   });
+//   console.log(nodeList);
+// };
 
 export { newProjectFormCreate, addProject, projectTodos };

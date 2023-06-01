@@ -96,6 +96,11 @@ body {
   border: 2px solid rgb(255, 255, 255);
 }
 
+.active {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
 form {
   font-weight: bold;
   font-size: 18px;
