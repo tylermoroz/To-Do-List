@@ -22,6 +22,6 @@ addProject();
 createTodo();
 formClear();
 addProjectBtn.addEventListener("click", newProjectFormCreate);
-// selectProject();
+selectProject();
 
 export { content };

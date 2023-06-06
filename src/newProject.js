@@ -38,12 +38,10 @@ const newProject = () => {
   projectsArray.push(project);
   const projectName = document.createElement("p");
   projectName.textContent = project.title;
+  projectName.classList.add("project");
   projectsDiv.removeChild(newProjectFormDiv);
   projectsDiv.appendChild(projectName);
   console.log(projectsArray);
-  // projectName.addEventListener("click", () => {
-  //   projectName.classList.add("active");
-  // });
 };
 
 const addProject = () => {
@@ -56,14 +54,18 @@ const addProject = () => {
   });
 };
 
-// const selectProject = () => {
-//   const nodeList = document.getElementById("projects-div").childNodes;
-//   nodeList.addEventListener("click", () => {
-//     for (let i = 0; i <= nodeList.length; i++) {
-//       childNodes.classList.remove("active");
-//     }
-//   });
-//   console.log(nodeList);
-// };
+const selectProject = () => {
+  let projectList = document.getElementById("projects-div");
+  let children = document.getElementById("projects-div").children;
 
-export { newProjectFormCreate, addProject, projectTodos };
+  projectList.addEventListener("click", (e) => {
+    for (let i = 0; i < children.length; i++) {
+      children[i].classList.remove("active");
+    }
+    if (e.target.classList.contains("project")) {
+      e.target.classList.add("active");
+    }
+  });
+};
+
+export { newProjectFormCreate, addProject, projectTodos, selectProject };
