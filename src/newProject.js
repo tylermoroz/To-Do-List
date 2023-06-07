@@ -14,14 +14,13 @@ const projectTitle = document.createElement("div");
 const projectTitleLabel = document.createElement("label");
 const projectTitleInput = document.createElement("input");
 
-newProjectFormDiv.setAttribute("id", "-project-form-div");
+newProjectFormDiv.setAttribute("id", "project-form-div");
 
 projectTitle.setAttribute("id", "project-title-div");
-projectTitleLabel.setAttribute("for", "project-title");
-projectTitleLabel.textContent = "New Project:";
 projectTitleInput.setAttribute("type", "text");
 projectTitleInput.setAttribute("name", "project-title");
 projectTitleInput.setAttribute("id", "project-title");
+projectTitleInput.placeholder = "New Project";
 
 const newProjectFormCreate = () => {
   projectsDiv.appendChild(newProjectFormDiv);
