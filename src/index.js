@@ -4,6 +4,7 @@ import { todoDiv } from "./displayTodo.js";
 import "./style.css";
 import { projectsContainer, addProjectBtn } from "./projects.js";
 import {
+  activeProject,
   addProject,
   newProjectFormCreate,
   selectProject,
@@ -23,5 +24,6 @@ createTodo();
 formClear();
 addProjectBtn.addEventListener("click", newProjectFormCreate);
 selectProject();
+activeProject();
 
 export { content };

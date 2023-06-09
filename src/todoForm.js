@@ -1,4 +1,5 @@
 const formDiv = document.createElement("div");
+const formHead = document.createElement("p");
 const form = document.createElement("form");
 
 const title = document.createElement("div");
@@ -32,6 +33,9 @@ const completeInput = document.createElement("input");
 const submit = document.createElement("button");
 
 formDiv.setAttribute("id", "form-div");
+
+formHead.setAttribute("id", "form-header");
+formHead.textContent = "Create To-Do";
 
 title.setAttribute("id", "todo-title");
 titleLabel.setAttribute("for", "title");
@@ -92,6 +96,7 @@ submit.textContent = "submit";
 
 const formCreate = () => {
   formDiv.appendChild(form);
+  formDiv.appendChild(formHead);
   form.appendChild(title);
   form.appendChild(dueDate);
   form.appendChild(priority);

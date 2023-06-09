@@ -1,6 +1,6 @@
 import { submit, completeInput } from "./todoForm.js";
 import { displayTodo, resetChildNodes } from "./displayTodo.js";
-import { projectTodos } from "./newProject.js";
+import { projectsArray } from "./newProject.js";
 
 const Todo = (title, description, dueDate, priority, notes, complete) => {
   return { title, description, dueDate, priority, notes, complete };
@@ -23,7 +23,11 @@ const newTodo = (event) => {
   todo.priority = document.getElementById("priority").value;
   todo.notes = document.getElementById("notes").value;
   todo.complete = completeValue(todo);
-  projectTodos.push(todo);
+  for (let i = 0; i < projectsArray.length; i++) {
+    if (projectsArray[i].active) {
+      projectsArray[i].todos.push(todo);
+    }
+  }
 };
 
 const createTodo = () => {

@@ -21,19 +21,9 @@ body {
   );
 }
 
-#form-div {
-  grid-column: 1 / 2;
-  grid-row: 1 / 2;
-  border: 3px solid black;
-  border-radius: 15px;
-  margin: 10px 5px 10px 10px;
-  padding: 10px;
-  background: rgba(255, 255, 255, 0.767);
-}
-
 #projects-container {
   grid-column: 1 / 2;
-  grid-row: 2 / 3;
+  grid-row: 1 / 2;
   border: 3px solid black;
   border-radius: 15px;
   margin: 10px 5px 10px 10px;
@@ -83,6 +73,7 @@ body {
   margin-bottom: 3px;
   font-size: 24px;
   cursor: pointer;
+  width: fit-content;
 }
 
 #project-title {
@@ -109,6 +100,26 @@ body {
 .active {
   text-decoration: underline;
   font-weight: bold;
+}
+
+#form-div {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  border: 3px solid black;
+  border-radius: 15px;
+  margin: 10px 5px 10px 10px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.767);
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+#form-header {
+  font-size: 28px;
+  margin: 0;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: underline;
 }
 
 form {

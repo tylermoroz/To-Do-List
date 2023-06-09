@@ -3,8 +3,8 @@ import { projectsDiv } from "./projects.js";
 const projectsArray = [];
 let projectTodos = [];
 
-const Project = (title, todos) => {
-  return { title, todos };
+const Project = (title, todos, active) => {
+  return { title, todos, active };
 };
 
 const newProjectFormDiv = document.createElement("div");
@@ -33,7 +33,8 @@ const newProjectFormCreate = () => {
 const newProject = () => {
   let project = Project();
   project.title = document.getElementById("project-title").value;
-  project.todos = projectTodos;
+  project.todos = [];
+  project.active = false;
   projectsArray.push(project);
   const projectName = document.createElement("p");
   projectName.textContent = project.title;
@@ -54,8 +55,8 @@ const addProject = () => {
 };
 
 const selectProject = () => {
-  let projectList = document.getElementById("projects-div");
-  let children = document.getElementById("projects-div").children;
+  const projectList = document.getElementById("projects-div");
+  const children = document.getElementById("projects-div").children;
 
   projectList.addEventListener("click", (e) => {
     for (let i = 0; i < children.length; i++) {
@@ -67,4 +68,31 @@ const selectProject = () => {
   });
 };
 
-export { newProjectFormCreate, addProject, projectTodos, selectProject };
+const activeProject = () => {
+  const projectSelection = document.getElementById("projects-div");
+  projectSelection.addEventListener("click", (e) => {
+    for (let i = 0; i < projectsArray.length; i++) {
+      if (
+        projectsArray[i].title === e.target.textContent &&
+        e.target.classList.contains("active")
+      ) {
+        projectsArray[i].active = true;
+        console.log(projectsArray);
+      } else if (
+        projectsArray[i].title !== e.target.textContent &&
+        e.target.classList.contains("active")
+      ) {
+        projectsArray[i].active = false;
+      }
+    }
+  });
+};
+
+export {
+  newProjectFormCreate,
+  addProject,
+  projectTodos,
+  selectProject,
+  activeProject,
+  projectsArray,
+};
