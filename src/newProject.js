@@ -1,7 +1,7 @@
 import { projectsDiv } from "./projects.js";
 
 const projectsArray = [];
-let projectTodos = [];
+// let projectTodos = [];
 
 const Project = (title, todos, active) => {
   return { title, todos, active };
@@ -91,7 +91,7 @@ const activeProject = () => {
 export {
   newProjectFormCreate,
   addProject,
-  projectTodos,
+  // projectTodos,
   selectProject,
   activeProject,
   projectsArray,

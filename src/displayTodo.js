@@ -1,23 +1,23 @@
-import { projectTodos } from "./newProject.js";
+import { projectsArray } from "./newProject.js";
 
 const todoDiv = document.createElement("div");
 
-const todoColor = (i, todo) => {
-  if (projectTodos[i].priority == "1") {
+const todoColor = (i, j, todo) => {
+  if (projectsArray[i].todos[j].priority == "1") {
     todo.style.boxShadow = "0px 0px 10px 4px #14d10a";
-  } else if (projectTodos[i].priority == "2") {
+  } else if (projectsArray[i].todos[j].priority == "2") {
     todo.style.boxShadow = "0px 0px 10px 4px #fad900";
-  } else if (projectTodos[i].priority == "3") {
+  } else if (projectsArray[i].todos[j].priority == "3") {
     todo.style.boxShadow = "0px 0px 10px 4px #fa000c";
   }
 };
 
-const priorityLevel = (i) => {
-  if (projectTodos[i].priority == "1") {
+const priorityLevel = (i, j) => {
+  if (projectsArray[i].todos[j].priority == "1") {
     return (priority.textContent = "Priority: Low");
-  } else if (projectTodos[i].priority == "2") {
+  } else if (projectsArray[i].todos[j].priority == "2") {
     return (priority.textContent = "Priority: Medium");
-  } else if (projectTodos[i].priority == "3") {
+  } else if (projectsArray[i].todos[j].priority == "3") {
     return (priority.textContent = "Priority: High");
   }
 };
@@ -29,49 +29,49 @@ const resetChildNodes = () => {
 };
 
 const displayTodo = () => {
-  for (let i = 0; i < projectTodos.length; i++) {
-    const todoObject = document.createElement("div");
-    const title = document.createElement("h3");
-    const priority = document.createElement("p");
-    const description = document.createElement("p");
-    const dueDate = document.createElement("p");
-    const notes = document.createElement("p");
-    const complete = document.createElement("button");
+  for (let i = 0; i < projectsArray.length; i++) {
+    for (let j = 0; j < projectsArray[i].todos.length; j++) {
+      const todoObject = document.createElement("div");
+      const title = document.createElement("h3");
+      const priority = document.createElement("p");
+      const description = document.createElement("p");
+      const dueDate = document.createElement("p");
+      const notes = document.createElement("p");
+      const complete = document.createElement("button");
 
-    title.textContent = projectTodos[i].title;
-    priority.textContent = priorityLevel(i);
-    description.textContent = projectTodos[i].description;
-    dueDate.textContent = projectTodos[i].dueDate;
-    notes.textContent = projectTodos[i].notes;
-    complete.textContent = projectTodos[i].complete;
+      title.textContent = projectsArray[i].todos[j].title;
+      priority.textContent = priorityLevel(i, j);
+      description.textContent = projectsArray[i].todos[j].description;
+      dueDate.textContent = projectsArray[i].todos[j].dueDate;
+      notes.textContent = projectsArray[i].todos[j].notes;
+      complete.textContent = projectsArray[i].todos[j].complete;
 
-    description.setAttribute("id", "description");
-    notes.setAttribute("id", "notes");
+      description.setAttribute("id", "description");
+      notes.setAttribute("id", "notes");
 
-    todoColor(i, todoObject);
+      todoColor(i, j, todoObject);
 
-    complete.addEventListener("click", () => {
-      if (projectTodos[i].complete == "complete") {
-        projectTodos[i].complete = "incomplete";
-        complete.textContent = projectTodos[i].complete;
-      } else if (projectTodos[i].complete == "incomplete") {
-        projectTodos[i].complete = "complete";
-        complete.textContent = projectTodos[i].complete;
-      }
-      console.log(projectTodos);
-    });
+      complete.addEventListener("click", () => {
+        if (projectsArray[i].todos[j].complete == "complete") {
+          projectsArray[i].todos[j].complete = "incomplete";
+          complete.textContent = projectsArray[i].todos[j].complete;
+        } else if (projectsArray[i].todos[j].complete == "incomplete") {
+          projectsArray[i].todos[j].complete = "complete";
+          complete.textContent = projectsArray[i].todos[j].complete;
+        }
+      });
 
-    todoObject.classList.add("todo-object");
+      todoObject.classList.add("todo-object");
 
-    todoDiv.appendChild(todoObject);
-    todoObject.appendChild(title);
-    todoObject.appendChild(dueDate);
-    todoObject.appendChild(priority);
-    todoObject.appendChild(description);
-    todoObject.appendChild(notes);
-    todoObject.appendChild(complete);
+      todoDiv.appendChild(todoObject);
+      todoObject.appendChild(title);
+      todoObject.appendChild(dueDate);
+      todoObject.appendChild(priority);
+      todoObject.appendChild(description);
+      todoObject.appendChild(notes);
+      todoObject.appendChild(complete);
+    }
   }
-  console.log(projectTodos);
 };
 
 export { displayTodo, resetChildNodes, todoDiv };
