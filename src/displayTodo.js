@@ -31,45 +31,51 @@ const resetChildNodes = () => {
 const displayTodo = () => {
   for (let i = 0; i < projectsArray.length; i++) {
     for (let j = 0; j < projectsArray[i].todos.length; j++) {
-      const todoObject = document.createElement("div");
-      const title = document.createElement("h3");
-      const priority = document.createElement("p");
-      const description = document.createElement("p");
-      const dueDate = document.createElement("p");
-      const notes = document.createElement("p");
-      const complete = document.createElement("button");
-
-      title.textContent = projectsArray[i].todos[j].title;
-      priority.textContent = priorityLevel(i, j);
-      description.textContent = projectsArray[i].todos[j].description;
-      dueDate.textContent = projectsArray[i].todos[j].dueDate;
-      notes.textContent = projectsArray[i].todos[j].notes;
-      complete.textContent = projectsArray[i].todos[j].complete;
-
-      description.setAttribute("id", "description");
-      notes.setAttribute("id", "notes");
-
-      todoColor(i, j, todoObject);
-
-      complete.addEventListener("click", () => {
-        if (projectsArray[i].todos[j].complete == "complete") {
-          projectsArray[i].todos[j].complete = "incomplete";
-          complete.textContent = projectsArray[i].todos[j].complete;
-        } else if (projectsArray[i].todos[j].complete == "incomplete") {
-          projectsArray[i].todos[j].complete = "complete";
-          complete.textContent = projectsArray[i].todos[j].complete;
+      if (projectsArray[i].active == false) {
+        while (todoDiv.lastElementChild) {
+          todoDiv.removeChild(todoDiv.lastElementChild);
         }
-      });
+      } else {
+        const todoObject = document.createElement("div");
+        const title = document.createElement("h3");
+        const priority = document.createElement("p");
+        const description = document.createElement("p");
+        const dueDate = document.createElement("p");
+        const notes = document.createElement("p");
+        const complete = document.createElement("button");
 
-      todoObject.classList.add("todo-object");
+        title.textContent = projectsArray[i].todos[j].title;
+        priority.textContent = priorityLevel(i, j);
+        description.textContent = projectsArray[i].todos[j].description;
+        dueDate.textContent = projectsArray[i].todos[j].dueDate;
+        notes.textContent = projectsArray[i].todos[j].notes;
+        complete.textContent = projectsArray[i].todos[j].complete;
 
-      todoDiv.appendChild(todoObject);
-      todoObject.appendChild(title);
-      todoObject.appendChild(dueDate);
-      todoObject.appendChild(priority);
-      todoObject.appendChild(description);
-      todoObject.appendChild(notes);
-      todoObject.appendChild(complete);
+        description.setAttribute("id", "description");
+        notes.setAttribute("id", "notes");
+
+        todoColor(i, j, todoObject);
+
+        complete.addEventListener("click", () => {
+          if (projectsArray[i].todos[j].complete == "complete") {
+            projectsArray[i].todos[j].complete = "incomplete";
+            complete.textContent = projectsArray[i].todos[j].complete;
+          } else if (projectsArray[i].todos[j].complete == "incomplete") {
+            projectsArray[i].todos[j].complete = "complete";
+            complete.textContent = projectsArray[i].todos[j].complete;
+          }
+        });
+
+        todoObject.classList.add("todo-object");
+
+        todoDiv.appendChild(todoObject);
+        todoObject.appendChild(title);
+        todoObject.appendChild(dueDate);
+        todoObject.appendChild(priority);
+        todoObject.appendChild(description);
+        todoObject.appendChild(notes);
+        todoObject.appendChild(complete);
+      }
     }
   }
 };

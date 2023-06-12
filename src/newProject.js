@@ -1,7 +1,7 @@
+import { todoDiv } from "./displayTodo.js";
 import { projectsDiv } from "./projects.js";
 
 const projectsArray = [];
-// let projectTodos = [];
 
 const Project = (title, todos, active) => {
   return { title, todos, active };
@@ -71,6 +71,9 @@ const selectProject = () => {
 const activeProject = () => {
   const projectSelection = document.getElementById("projects-div");
   projectSelection.addEventListener("click", (e) => {
+    while (todoDiv.lastElementChild) {
+      todoDiv.removeChild(todoDiv.lastElementChild);
+    }
     for (let i = 0; i < projectsArray.length; i++) {
       if (
         projectsArray[i].title === e.target.textContent &&
@@ -91,7 +94,6 @@ const activeProject = () => {
 export {
   newProjectFormCreate,
   addProject,
-  // projectTodos,
   selectProject,
   activeProject,
   projectsArray,
