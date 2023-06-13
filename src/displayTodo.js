@@ -30,12 +30,8 @@ const resetChildNodes = () => {
 
 const displayTodo = () => {
   for (let i = 0; i < projectsArray.length; i++) {
-    for (let j = 0; j < projectsArray[i].todos.length; j++) {
-      if (projectsArray[i].active == false) {
-        while (todoDiv.lastElementChild) {
-          todoDiv.removeChild(todoDiv.lastElementChild);
-        }
-      } else {
+    if (projectsArray[i].active == true) {
+      for (let j = 0; j < projectsArray[i].todos.length; j++) {
         const todoObject = document.createElement("div");
         const title = document.createElement("h3");
         const priority = document.createElement("p");

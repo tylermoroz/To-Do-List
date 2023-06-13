@@ -6,6 +6,7 @@ import { projectsContainer, addProjectBtn } from "./projects.js";
 import {
   activeProject,
   addProject,
+  displayActiveProject,
   newProjectFormCreate,
   selectProject,
 } from "./newProject.js";
@@ -25,5 +26,6 @@ formClear();
 addProjectBtn.addEventListener("click", newProjectFormCreate);
 selectProject();
 activeProject();
+displayActiveProject();
 
 export { content };

@@ -1,4 +1,4 @@
-import { todoDiv } from "./displayTodo.js";
+import { displayTodo, resetChildNodes } from "./displayTodo.js";
 import { projectsDiv } from "./projects.js";
 
 const projectsArray = [];
@@ -45,11 +45,17 @@ const newProject = () => {
 };
 
 const addProject = () => {
+  const children = document.getElementById("projects-div").children;
+
   projectTitleInput.addEventListener("keypress", (event) => {
     if (event.key === "Enter") {
       event.preventDefault();
       newProject();
       newProjectForm.reset();
+      if (projectsArray.length == 1) {
+        projectsArray[0].active = true;
+        children[0].classList.add("active");
+      }
     }
   });
 };
@@ -71,9 +77,6 @@ const selectProject = () => {
 const activeProject = () => {
   const projectSelection = document.getElementById("projects-div");
   projectSelection.addEventListener("click", (e) => {
-    while (todoDiv.lastElementChild) {
-      todoDiv.removeChild(todoDiv.lastElementChild);
-    }
     for (let i = 0; i < projectsArray.length; i++) {
       if (
         projectsArray[i].title === e.target.textContent &&
@@ -88,7 +91,13 @@ const activeProject = () => {
         projectsArray[i].active = false;
       }
     }
+    resetChildNodes();
   });
+};
+
+const displayActiveProject = () => {
+  const projectGroup = document.getElementById("projects-div");
+  projectGroup.addEventListener("click", displayTodo);
 };
 
 export {
@@ -97,4 +106,5 @@ export {
   selectProject,
   activeProject,
   projectsArray,
+  displayActiveProject,
 };
