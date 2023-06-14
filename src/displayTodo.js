@@ -1,6 +1,9 @@
 import { projectsArray } from "./newProject.js";
 
-const todoDiv = document.createElement("div");
+const activeProjectContainer = document.createElement("div");
+const activeProjectHead = document.createElement("div");
+const activeProjectTodos = document.createElement("div");
+const activeProjectTitle = document.createElement("p");
 
 const todoColor = (i, j, todo) => {
   if (projectsArray[i].todos[j].priority == "1") {
@@ -23,8 +26,8 @@ const priorityLevel = (i, j) => {
 };
 
 const resetChildNodes = () => {
-  while (todoDiv.firstChild) {
-    todoDiv.removeChild(todoDiv.firstChild);
+  while (activeProjectTodos.firstChild) {
+    activeProjectTodos.removeChild(activeProjectTodos.firstChild);
   }
 };
 
@@ -64,7 +67,7 @@ const displayTodo = () => {
 
         todoObject.classList.add("todo-object");
 
-        todoDiv.appendChild(todoObject);
+        activeProjectTodos.appendChild(todoObject);
         todoObject.appendChild(title);
         todoObject.appendChild(dueDate);
         todoObject.appendChild(priority);
@@ -76,4 +79,11 @@ const displayTodo = () => {
   }
 };
 
-export { displayTodo, resetChildNodes, todoDiv };
+export {
+  displayTodo,
+  resetChildNodes,
+  activeProjectContainer,
+  activeProjectHead,
+  activeProjectTodos,
+  activeProjectTitle,
+};

@@ -1,4 +1,8 @@
-import { displayTodo, resetChildNodes } from "./displayTodo.js";
+import {
+  displayTodo,
+  resetChildNodes,
+  activeProjectTitle,
+} from "./displayTodo.js";
 import { projectsDiv } from "./projects.js";
 
 const projectsArray = [];
@@ -52,10 +56,7 @@ const addProject = () => {
       event.preventDefault();
       newProject();
       newProjectForm.reset();
-      if (projectsArray.length == 1) {
-        projectsArray[0].active = true;
-        children[0].classList.add("active");
-      }
+      displayProjectTitle();
     }
   });
 };
@@ -97,7 +98,16 @@ const activeProject = () => {
 
 const displayActiveProject = () => {
   const projectGroup = document.getElementById("projects-div");
+  projectGroup.addEventListener("click", displayProjectTitle);
   projectGroup.addEventListener("click", displayTodo);
+};
+
+const displayProjectTitle = () => {
+  for (let i = 0; i < projectsArray.length; i++) {
+    if (projectsArray[i].active == true) {
+      activeProjectTitle.textContent = projectsArray[i].title;
+    }
+  }
 };
 
 export {

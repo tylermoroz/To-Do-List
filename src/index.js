@@ -1,6 +1,11 @@
 import { formCreate, formClear, formDiv } from "./todoForm";
 import { createTodo } from "./createTodo.js";
-import { todoDiv } from "./displayTodo.js";
+import {
+  activeProjectHead,
+  activeProjectContainer,
+  activeProjectTodos,
+  activeProjectTitle,
+} from "./displayTodo.js";
 import "./style.css";
 import { projectsContainer, addProjectBtn } from "./projects.js";
 import {
@@ -13,11 +18,17 @@ import {
 
 const content = document.querySelector("#content");
 
-todoDiv.setAttribute("id", "todo-div");
+activeProjectContainer.setAttribute("id", "active-project-container");
+activeProjectHead.setAttribute("id", "active-project-head");
+activeProjectTodos.setAttribute("id", "active-project-todos");
+activeProjectTitle.setAttribute("id", "active-project-title");
 
 content.appendChild(formDiv);
 content.appendChild(projectsContainer);
-content.appendChild(todoDiv);
+content.appendChild(activeProjectContainer);
+activeProjectContainer.appendChild(activeProjectHead);
+activeProjectHead.appendChild(activeProjectTitle);
+activeProjectContainer.appendChild(activeProjectTodos);
 
 formCreate();
 addProject();
