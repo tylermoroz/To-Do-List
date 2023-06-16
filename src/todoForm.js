@@ -1,3 +1,5 @@
+import { content } from "./index.js";
+
 const formDiv = document.createElement("div");
 const formHead = document.createElement("p");
 const form = document.createElement("form");
@@ -31,6 +33,8 @@ const completeLabel = document.createElement("label");
 const completeInput = document.createElement("input");
 
 const submit = document.createElement("button");
+
+const formBarrier = document.createElement("div");
 
 formDiv.setAttribute("id", "form-div");
 
@@ -94,7 +98,10 @@ completeInput.setAttribute("id", "complete");
 submit.setAttribute("id", "submit");
 submit.textContent = "submit";
 
+formBarrier.setAttribute("id", "form-barrier");
+
 const formCreate = () => {
+  content.appendChild(formBarrier);
   formDiv.appendChild(form);
   formDiv.appendChild(formHead);
   form.appendChild(title);
@@ -128,4 +135,17 @@ const formClear = () => {
   });
 };
 
-export { formCreate, formDiv, submit, completeInput, formClear };
+const disableForm = () => {
+  const children = document.getElementById("projects-div").children;
+
+  for (let i = 0; i < children.length; i++) {
+    if (
+      children[i].classList.contains("active") &&
+      content.contains(formBarrier)
+    ) {
+      content.removeChild(formBarrier);
+    }
+  }
+};
+
+export { formCreate, formDiv, submit, completeInput, formClear, disableForm };

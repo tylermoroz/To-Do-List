@@ -4,6 +4,7 @@ import {
   activeProjectTitle,
 } from "./displayTodo.js";
 import { projectsDiv } from "./projects.js";
+import { disableForm } from "./todoForm.js";
 
 const projectsArray = [];
 
@@ -49,8 +50,6 @@ const newProject = () => {
 };
 
 const addProject = () => {
-  const children = document.getElementById("projects-div").children;
-
   projectTitleInput.addEventListener("keypress", (event) => {
     if (event.key === "Enter") {
       event.preventDefault();
@@ -93,6 +92,7 @@ const activeProject = () => {
       }
     }
     resetChildNodes();
+    disableForm();
   });
 };
 
