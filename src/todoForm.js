@@ -137,13 +137,24 @@ const formClear = () => {
 
 const disableForm = () => {
   const children = document.getElementById("projects-div").children;
-
   for (let i = 0; i < children.length; i++) {
     if (
       children[i].classList.contains("active") &&
       content.contains(formBarrier)
     ) {
       content.removeChild(formBarrier);
+      formHead.style.color = "black";
+      titleLabel.style.color = "black";
+      dueDateLabel.style.color = "black";
+      dueDateInput.style.color = "black";
+      priorityLabel.style.color = "black";
+      priorityLevelLow.style.color = "black";
+      priorityLevelMid.style.color = "black";
+      priorityLevelHigh.style.color = "black";
+      descriptionLabel.style.color = "black";
+      notesLabel.style.color = "black";
+      completeLabel.style.color = "black";
+      submit.style.color = "black";
     }
   }
 };

@@ -121,11 +121,8 @@ body {
   width: 94%;
   height: 95.5%;
   position: absolute;
-  border: 3px solid black;
   border-radius: 15px;
   margin: 10px 5px 10px 10px;
-
-  background: rgba(255, 255, 255, 0.904);
 }
 
 #form-header {
@@ -134,11 +131,27 @@ body {
   font-weight: 700;
   text-align: center;
   text-decoration: underline;
+  color: grey;
 }
 
 form {
   font-weight: bold;
   font-size: 18px;
+}
+
+form p {
+  color: grey;
+}
+
+form label {
+  color: grey;
+}
+form input {
+  color: grey;
+}
+
+form button {
+  color: grey;
 }
 
 form #todo-title {
