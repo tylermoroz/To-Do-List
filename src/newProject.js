@@ -55,6 +55,7 @@ const addProject = () => {
       event.preventDefault();
       newProject();
       newProjectForm.reset();
+      activeAfterCreation();
       displayProjectTitle();
     }
   });
@@ -65,13 +66,29 @@ const selectProject = () => {
   const children = document.getElementById("projects-div").children;
 
   projectList.addEventListener("click", (e) => {
-    for (let i = 0; i < children.length; i++) {
-      children[i].classList.remove("active");
-    }
     if (e.target.classList.contains("project")) {
-      e.target.classList.add("active");
+      for (let i = 0; i < children.length; i++) {
+        children[i].classList.remove("active");
+      }
+      if (e.target.classList.contains("project")) {
+        e.target.classList.add("active");
+      }
     }
   });
+};
+
+const activeAfterCreation = () => {
+  const children = document.getElementById("projects-div").children;
+
+  for (let j = 0; j < projectsArray.length; j++) {
+    projectsArray[j].active = false;
+    projectsArray[projectsArray.length - 1].active = true;
+  }
+  for (let i = 0; i < children.length; i++) {
+    children[i].classList.remove("active");
+    children[children.length - 1].classList.add("active");
+    displayActiveProject();
+  }
 };
 
 const activeProject = () => {
