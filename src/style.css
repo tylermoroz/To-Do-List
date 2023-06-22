@@ -292,8 +292,18 @@ form #todo-checklist {
   width: fit-content;
   align-self: center;
   margin-top: 15px;
+  cursor: pointer;
 }
 
 .todo-object #description {
   font-style: italic;
+}
+
+.todo-object #expand-btn {
+  font-size: 26px;
+  border: none;
+  cursor: pointer;
+  background: none;
+  padding: 0;
+  margin: 0;
 }

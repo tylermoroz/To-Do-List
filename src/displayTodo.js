@@ -42,16 +42,19 @@ const displayTodo = () => {
         const dueDate = document.createElement("p");
         const notes = document.createElement("p");
         const complete = document.createElement("button");
+        const expand = document.createElement("button");
 
         title.textContent = projectsArray[i].todos[j].title;
         priority.textContent = priorityLevel(i, j);
-        description.textContent = projectsArray[i].todos[j].description;
+        description.textContent = `Description: ${projectsArray[i].todos[j].description}`;
         dueDate.textContent = projectsArray[i].todos[j].dueDate;
-        notes.textContent = projectsArray[i].todos[j].notes;
+        notes.textContent = `Notes: ${projectsArray[i].todos[j].notes}`;
         complete.textContent = projectsArray[i].todos[j].complete;
+        expand.textContent = "⌄";
 
         description.setAttribute("id", "description");
         notes.setAttribute("id", "notes");
+        expand.setAttribute("id", "expand-btn");
 
         todoColor(i, j, todoObject);
 
@@ -65,15 +68,22 @@ const displayTodo = () => {
           }
         });
 
+        expand.addEventListener("click", () => {
+          todoObject.appendChild(priority);
+          todoObject.appendChild(description);
+          todoObject.appendChild(notes);
+        });
+
         todoObject.classList.add("todo-object");
 
         activeProjectTodos.appendChild(todoObject);
         todoObject.appendChild(title);
         todoObject.appendChild(dueDate);
-        todoObject.appendChild(priority);
-        todoObject.appendChild(description);
-        todoObject.appendChild(notes);
+        // todoObject.appendChild(priority);
+        // todoObject.appendChild(description);
+        // todoObject.appendChild(notes);
         todoObject.appendChild(complete);
+        todoObject.appendChild(expand);
       }
     }
   }

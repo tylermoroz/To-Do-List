@@ -135,7 +135,7 @@ const formClear = () => {
   });
 };
 
-const disableForm = () => {
+const enableForm = () => {
   const children = document.getElementById("projects-div").children;
   for (let i = 0; i < children.length; i++) {
     if (
@@ -159,4 +159,4 @@ const disableForm = () => {
   }
 };
 
-export { formCreate, formDiv, submit, completeInput, formClear, disableForm };
+export { formCreate, formDiv, submit, completeInput, formClear, enableForm };

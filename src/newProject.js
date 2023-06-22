@@ -4,7 +4,7 @@ import {
   activeProjectTitle,
 } from "./displayTodo.js";
 import { projectsDiv } from "./projects.js";
-import { disableForm } from "./todoForm.js";
+import { enableForm } from "./todoForm.js";
 
 const projectsArray = [];
 
@@ -89,6 +89,7 @@ const activeAfterCreation = () => {
     children[children.length - 1].classList.add("active");
     displayActiveProject();
   }
+  enableForm();
 };
 
 const activeProject = () => {
@@ -109,7 +110,7 @@ const activeProject = () => {
       }
     }
     resetChildNodes();
-    disableForm();
+    enableForm();
   });
 };
 
