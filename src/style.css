@@ -300,10 +300,11 @@ form #todo-checklist {
 }
 
 .todo-object #expand-btn {
-  font-size: 26px;
+  font-size: 18px;
   border: none;
   cursor: pointer;
   background: none;
   padding: 0;
-  margin: 0;
+  margin-top: 5px;
+  margin-bottom: -5px;
 }

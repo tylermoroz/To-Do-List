@@ -50,7 +50,7 @@ const displayTodo = () => {
         dueDate.textContent = projectsArray[i].todos[j].dueDate;
         notes.textContent = `Notes: ${projectsArray[i].todos[j].notes}`;
         complete.textContent = projectsArray[i].todos[j].complete;
-        expand.textContent = "⌄";
+        expand.textContent = "⏬";
 
         description.setAttribute("id", "description");
         notes.setAttribute("id", "notes");
@@ -69,9 +69,17 @@ const displayTodo = () => {
         });
 
         expand.addEventListener("click", () => {
-          todoObject.appendChild(priority);
-          todoObject.appendChild(description);
-          todoObject.appendChild(notes);
+          if (todoObject.querySelector("#description") == null) {
+            todoObject.appendChild(priority);
+            todoObject.appendChild(description);
+            todoObject.appendChild(notes);
+            expand.textContent = "⏫";
+          } else {
+            todoObject.removeChild(priority);
+            todoObject.removeChild(description);
+            todoObject.removeChild(notes);
+            expand.textContent = "⏬";
+          }
         });
 
         todoObject.classList.add("todo-object");
