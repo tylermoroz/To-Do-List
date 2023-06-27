@@ -6,7 +6,7 @@ import {
 import { projectsDiv } from "./projects.js";
 import { enableForm } from "./todoForm.js";
 
-const projectsArray = [];
+let projectsArray = [];
 
 const Project = (title, todos, active) => {
   return { title, todos, active };
