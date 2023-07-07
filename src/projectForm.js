@@ -1,3 +1,5 @@
+import { createProject, projectsArray } from "./projects.js";
+
 const projectFormDiv = document.createElement("div");
 const projectDivHead = document.createElement("div");
 const projectTitleDiv = document.createElement("div");
@@ -44,6 +46,8 @@ input.addEventListener("keypress", (e) => {
     projectListForm.reset();
     projectListForm.remove();
     projectListDiv.appendChild(projectName);
+    createProject(projectName.textContent, []);
+    console.log(projectsArray);
   }
 });
 
