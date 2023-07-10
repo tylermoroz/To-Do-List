@@ -43,12 +43,20 @@ input.addEventListener("keypress", (e) => {
   if (e.code === "Enter") {
     e.preventDefault();
     projectName.textContent = document.querySelector(".project-input").value;
+    for (let i = 0; i < projectListDiv.children.length; i++) {
+      projectName.setAttribute("data-index", i);
+    }
     projectListForm.reset();
     projectListForm.remove();
     projectListDiv.appendChild(projectName);
     createProject(projectName.textContent, []);
     console.log(projectsArray);
   }
+});
+
+projectListDiv.addEventListener("click", (e) => {
+  // const projectList = document.projectsListDiv.children;
+  e.target.classList.add("active");
 });
 
 export { projectFormDiv };

@@ -1,13 +1,14 @@
 const projectsArray = [];
 
-const Project = (title, todos) => {
-  return { title, todos };
+const Project = (title, todos, active) => {
+  return { title, todos, active };
 };
 
 const createProject = (title, todos) => {
   let newProject = Project();
   newProject.title = title;
   newProject.todos = [...todos];
+  newProject.active = false;
   projectsArray.push(newProject);
 };
 
