@@ -49,14 +49,53 @@ input.addEventListener("keypress", (e) => {
     projectListForm.reset();
     projectListForm.remove();
     projectListDiv.appendChild(projectName);
-    createProject(projectName.textContent, []);
+    createProject(projectName.textContent, [], true);
+    removeActiveClass();
+    projectName.classList.add("active");
+    projectName.classList.add("project");
     console.log(projectsArray);
   }
 });
 
-projectListDiv.addEventListener("click", (e) => {
-  // const projectList = document.projectsListDiv.children;
-  e.target.classList.add("active");
-});
+const changeActiveClass = () => {
+  const projectList = document.getElementById("projects-list-div");
+  // const children = document.getElementById("projects-list-div").children;
 
-export { projectFormDiv };
+  projectList.addEventListener("click", (e) => {
+    if (e.target.tagName == "P") {
+      removeActiveClass();
+    }
+
+    e.target.classList.add("active");
+  });
+};
+
+const removeActiveClass = () => {
+  const children = document.getElementById("projects-list-div").children;
+
+  for (let i = 0; i < children.length; i++) {
+    children[i].classList.remove("active");
+  }
+};
+
+const activeProject = () => {
+  const projectSelect = document.getElementById("projects-list-div");
+  projectSelect.addEventListener("click", (e) => {
+    for (let i = 0; i < projectsArray.length; i++) {
+      if (
+        projectsArray[i].title === e.target.textContent &&
+        e.target.classList.contains("active")
+      ) {
+        projectsArray[i].active = true;
+        console.log(projectsArray);
+      } else if (
+        projectsArray[i].title !== e.target.textContent &&
+        e.target.classList.contains("active")
+      ) {
+        projectsArray[i].active = false;
+      }
+    }
+  });
+};
+
+export { projectFormDiv, changeActiveClass, activeProject };

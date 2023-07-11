@@ -35,6 +35,7 @@ body {
   padding: 0;
   flex-direction: column;
   margin: 15px 0 0 15px;
+  min-width: 200px;
 }
 
 #project-div-head {
@@ -77,10 +78,25 @@ body {
 
 #projects-list-div {
   height: 100%;
+  padding: 0 10px 0 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.project {
+  cursor: pointer;
+  font-size: 20px;
+  margin: 1px;
 }
 
 #active-project-div {
   grid-column: 2 / 3;
   grid-row: 1 / 3;
   margin: 15px 15px 15px 0;
+}
+
+.active {
+  font-weight: bold;
+  text-decoration: underline;
 }
