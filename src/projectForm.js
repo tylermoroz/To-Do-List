@@ -83,13 +83,15 @@ const activeProject = () => {
   projectSelect.addEventListener("click", (e) => {
     for (let i = 0; i < projectsArray.length; i++) {
       if (
-        projectsArray[i].title === e.target.textContent &&
+        parseInt(projectsArray.indexOf(projectsArray[i])) ===
+          parseInt(e.target.dataset.index) &&
         e.target.classList.contains("active")
       ) {
         projectsArray[i].active = true;
         console.log(projectsArray);
       } else if (
-        projectsArray[i].title !== e.target.textContent &&
+        parseInt(projectsArray.indexOf(projectsArray[i])) !==
+          parseInt(e.target.dataset.index) &&
         e.target.classList.contains("active")
       ) {
         projectsArray[i].active = false;
