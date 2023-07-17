@@ -9,7 +9,7 @@ body {
   width: 100vw;
   display: grid;
   grid-template-columns: 1fr 7fr;
-  grid-template-rows: 2fr 1.5fr;
+  grid-template-rows: 1.5fr 2fr;
   grid-auto-flow: row;
   gap: 15px;
   background: rgb(249, 197, 3);
@@ -81,7 +81,7 @@ body {
   padding: 0 10px 0 10px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .project {
@@ -98,5 +98,42 @@ body {
 
 .active {
   font-weight: bold;
+  text-decoration: underline;
+}
+
+#active-project-head {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#active-project-title {
+  font-size: 46px;
+  text-decoration: underline;
+}
+
+#todo-form-div {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  display: flex;
+  padding: 0;
+  margin: 0 0 15px 15px;
+  min-width: 200px;
+}
+
+#todo-div-head {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin-bottom: -15px; */
+  height: 50px;
+}
+
+#todo-div-title {
+  font-size: 28px;
   text-decoration: underline;
 }

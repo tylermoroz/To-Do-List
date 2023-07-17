@@ -1,3 +1,4 @@
+import { changeTitle } from "./activeProject.js";
 import { createProject, projectsArray } from "./projects.js";
 
 const projectFormDiv = document.createElement("div");
@@ -53,13 +54,13 @@ input.addEventListener("keypress", (e) => {
     removeActiveClass();
     projectName.classList.add("active");
     projectName.classList.add("project");
+    changeTitle();
     console.log(projectsArray);
   }
 });
 
 const changeActiveClass = () => {
   const projectList = document.getElementById("projects-list-div");
-  // const children = document.getElementById("projects-list-div").children;
 
   projectList.addEventListener("click", (e) => {
     if (e.target.tagName == "P") {
@@ -88,6 +89,7 @@ const activeProject = () => {
         e.target.classList.contains("active")
       ) {
         projectsArray[i].active = true;
+
         console.log(projectsArray);
       } else if (
         parseInt(projectsArray.indexOf(projectsArray[i])) !==
@@ -97,6 +99,7 @@ const activeProject = () => {
         projectsArray[i].active = false;
       }
     }
+    changeTitle();
   });
 };
 
