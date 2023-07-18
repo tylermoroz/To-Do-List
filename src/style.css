@@ -114,13 +114,15 @@ body {
   text-decoration: underline;
 }
 
-#todo-form-div {
+#todo-form-container {
   grid-column: 1 / 2;
   grid-row: 2 / 3;
   display: flex;
   padding: 0;
   margin: 0 0 15px 15px;
   min-width: 200px;
+  align-items: center;
+  flex-direction: column;
 }
 
 #todo-div-head {
@@ -133,7 +135,7 @@ body {
   height: 50px;
 }
 
-#todo-div-title {
+#todo-div-header {
   font-size: 28px;
   text-decoration: underline;
 }

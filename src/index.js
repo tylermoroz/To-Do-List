@@ -10,12 +10,12 @@ import {
   activeProjectHead,
   activeProjectTitle,
 } from "./activeProject.js";
-import { todoFormDiv } from "./toDoForm";
+import { todoFormContainer } from "./toDoForm";
 
 const content = document.querySelector("#content");
 content.appendChild(projectFormDiv);
 content.appendChild(activeProjectDiv);
-content.append(todoFormDiv);
+content.append(todoFormContainer);
 activeProjectDiv.appendChild(activeProjectHead);
 activeProjectHead.appendChild(activeProjectTitle);
 
