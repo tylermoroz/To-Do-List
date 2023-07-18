@@ -17,6 +17,7 @@ const todoTitleDiv = document.createElement("div");
 const todoTitleLabel = document.createElement("label");
 const todoTitleInput = document.createElement("input");
 todoTitleDiv.setAttribute("id", "todo-title-div");
+todoTitleDiv.classList.add("form-elements");
 todoTitleLabel.textContent = "Title:";
 todoTitleInput.setAttribute("type", "text");
 
@@ -24,6 +25,7 @@ const todoDueDateDiv = document.createElement("div");
 const todoDueDateLabel = document.createElement("label");
 const todoDueDateInput = document.createElement("input");
 todoDueDateDiv.setAttribute("id", "todo-duedate-div");
+todoDueDateDiv.classList.add("form-elements");
 todoDueDateLabel.textContent = "Date:";
 todoDueDateInput.setAttribute("type", "date");
 
@@ -31,26 +33,44 @@ const todoDescriptionDiv = document.createElement("div");
 const todoDescriptionLabel = document.createElement("label");
 const todoDescriptionInput = document.createElement("input");
 todoDescriptionDiv.setAttribute("id", "todo-description-div");
+todoDescriptionDiv.classList.add("form-elements");
 todoDescriptionLabel.textContent = "Description:";
 todoDescriptionInput.setAttribute("type", "text");
 
 const todoPriorityDiv = document.createElement("div");
 const todoPriorityLabel = document.createElement("label");
 const todoPriorityInput = document.createElement("input");
+const todoPriorityLevels = document.createElement("div");
+const todoPriorityLow = document.createElement("p");
+const todoPriorityMid = document.createElement("p");
+const todoPriorityHigh = document.createElement("p");
 todoPriorityDiv.setAttribute("id", "todo-priority-div");
+todoPriorityDiv.classList.add("form-elements");
 todoPriorityLabel.textContent = "Priority:";
 todoPriorityInput.setAttribute("type", "range");
+todoPriorityInput.setAttribute("min", "0");
+todoPriorityInput.setAttribute("max", "2");
+todoPriorityLevels.setAttribute("id", "priority-levels");
+todoPriorityLow.textContent = "Low";
+todoPriorityLow.style.textShadow = "0 0 7px red";
+todoPriorityMid.textContent = "Mid";
+todoPriorityMid.style.textShadow = "0 0 7px yellow";
+todoPriorityHigh.textContent = "High";
+todoPriorityHigh.style.textShadow = "0 0 7px green";
 
 const todoNotesDiv = document.createElement("div");
 const todoNotesLabel = document.createElement("label");
 const todoNotesInput = document.createElement("textarea");
+todoNotesDiv.classList.add("form-elements");
 todoNotesDiv.setAttribute("id", "todo-notes-div");
+todoNotesInput.setAttribute("rows", "5");
 todoNotesLabel.textContent = "Notes:";
 
 const todoCompleteDiv = document.createElement("div");
 const todoCompleteLabel = document.createElement("label");
 const todoCompleteInput = document.createElement("input");
 todoCompleteDiv.setAttribute("id", "todo-complete-div");
+todoCompleteDiv.classList.add("form-elements");
 todoCompleteLabel.textContent = "Complete";
 todoCompleteInput.setAttribute("type", "radio");
 
@@ -77,11 +97,15 @@ todoDueDateDiv.appendChild(todoDueDateInput);
 todoDescriptionDiv.appendChild(todoDescriptionLabel);
 todoDescriptionDiv.appendChild(todoDescriptionInput);
 todoPriorityDiv.appendChild(todoPriorityLabel);
+todoPriorityDiv.appendChild(todoPriorityLevels);
+todoPriorityLevels.appendChild(todoPriorityLow);
+todoPriorityLevels.appendChild(todoPriorityMid);
+todoPriorityLevels.appendChild(todoPriorityHigh);
 todoPriorityDiv.appendChild(todoPriorityInput);
 todoNotesDiv.appendChild(todoNotesLabel);
 todoNotesDiv.appendChild(todoNotesInput);
-todoCompleteDiv.appendChild(todoCompleteLabel);
 todoCompleteDiv.appendChild(todoCompleteInput);
+todoCompleteDiv.appendChild(todoCompleteLabel);
 todoSubmitDiv.appendChild(todoSubmitBtn);
 
 export { todoFormContainer };
