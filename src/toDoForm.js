@@ -1,3 +1,5 @@
+import { createTodo, projectsArray } from "./projects.js";
+
 const todoFormContainer = document.createElement("div");
 todoFormContainer.setAttribute("id", "todo-form-container");
 todoFormContainer.classList.add("div-background");
@@ -48,8 +50,9 @@ todoPriorityDiv.setAttribute("id", "todo-priority-div");
 todoPriorityDiv.classList.add("form-elements");
 todoPriorityLabel.textContent = "Priority:";
 todoPriorityInput.setAttribute("type", "range");
-todoPriorityInput.setAttribute("min", "0");
-todoPriorityInput.setAttribute("max", "2");
+todoPriorityInput.setAttribute("min", "1");
+todoPriorityInput.setAttribute("max", "3");
+todoPriorityInput.setAttribute("value", "1");
 todoPriorityLevels.setAttribute("id", "priority-levels");
 todoPriorityLow.textContent = "Low";
 todoPriorityLow.style.textShadow = "0 0 7px red";
@@ -107,5 +110,28 @@ todoNotesDiv.appendChild(todoNotesInput);
 todoCompleteDiv.appendChild(todoCompleteInput);
 todoCompleteDiv.appendChild(todoCompleteLabel);
 todoSubmitDiv.appendChild(todoSubmitBtn);
+
+const pushToActiveProject = () => {
+  for (let i = 0; i < projectsArray.length; i++) {
+    if (projectsArray[i].active == true) {
+      return projectsArray[i].todos;
+    }
+  }
+};
+
+todoSubmitBtn.addEventListener("click", (event) => {
+  event.preventDefault();
+  createTodo(
+    todoTitleInput.value,
+    todoDueDateInput.value,
+    todoDescriptionInput.value,
+    todoPriorityInput.value,
+    todoNotesInput.value,
+    todoCompleteInput.value,
+    pushToActiveProject()
+  );
+  todoForm.reset();
+  console.log(projectsArray);
+});
 
 export { todoFormContainer };
