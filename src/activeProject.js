@@ -3,11 +3,13 @@ import { projectsArray } from "./projects.js";
 const activeProjectDiv = document.createElement("div");
 const activeProjectHead = document.createElement("div");
 const activeProjectTitle = document.createElement("h3");
+const activeTodoDiv = document.createElement("div");
 
 activeProjectDiv.setAttribute("id", "active-project-div");
 activeProjectDiv.classList.add("div-background");
 activeProjectHead.setAttribute("id", "active-project-head");
 activeProjectTitle.setAttribute("id", "active-project-title");
+activeTodoDiv.setAttribute("id", "active-todo-div");
 
 const changeTitle = () => {
   for (let i = 0; i < projectsArray.length; i++) {
@@ -17,4 +19,45 @@ const changeTitle = () => {
   }
 };
 
-export { activeProjectDiv, activeProjectHead, activeProjectTitle, changeTitle };
+const displayTodos = () => {
+  const todoDiv = document.createElement("div");
+  const todoTitle = document.createElement("p");
+  const todoDueDate = document.createElement("p");
+  const todoDescription = document.createElement("p");
+  const todoPriority = document.createElement("p");
+  const todoNotes = document.createElement("p");
+  const todoComplete = document.createElement("p");
+
+  todoDiv.setAttribute("id", "todo-div");
+  todoDiv.classList.add("div-background");
+
+  for (let i = 0; i < projectsArray.length; i++) {
+    if (projectsArray[i].active == true) {
+      for (let t = 0; t < projectsArray[i].todos.length; t++) {
+        todoTitle.textContent = projectsArray[i].todos[t].title;
+        todoDueDate.textContent = projectsArray[i].todos[t].dueDate;
+        todoDescription.textContent = projectsArray[i].todos[t].description;
+        todoPriority.textContent = projectsArray[i].todos[t].priority;
+        todoNotes.textContent = projectsArray[i].todos[t].notes;
+        todoComplete.textContent = projectsArray[i].todos[t].complete;
+
+        activeTodoDiv.appendChild(todoDiv);
+        todoDiv.appendChild(todoTitle);
+        todoDiv.appendChild(todoDueDate);
+        todoDiv.appendChild(todoDescription);
+        todoDiv.appendChild(todoPriority);
+        todoDiv.appendChild(todoNotes);
+        todoDiv.appendChild(todoComplete);
+      }
+    }
+  }
+};
+
+export {
+  activeProjectDiv,
+  activeProjectHead,
+  activeProjectTitle,
+  changeTitle,
+  activeTodoDiv,
+  displayTodos,
+};

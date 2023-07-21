@@ -1,3 +1,4 @@
+import { displayTodos } from "./activeProject.js";
 import { createTodo, projectsArray } from "./projects.js";
 
 const todoFormContainer = document.createElement("div");
@@ -130,6 +131,7 @@ todoSubmitBtn.addEventListener("click", (event) => {
     todoCompleteInput.value,
     pushToActiveProject()
   );
+  displayTodos();
   todoForm.reset();
   console.log(projectsArray);
 });

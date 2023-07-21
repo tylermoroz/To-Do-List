@@ -9,6 +9,7 @@ import {
   activeProjectDiv,
   activeProjectHead,
   activeProjectTitle,
+  activeTodoDiv,
 } from "./activeProject.js";
 import { todoFormContainer } from "./toDoForm";
 
@@ -17,6 +18,7 @@ content.appendChild(projectFormDiv);
 content.appendChild(activeProjectDiv);
 content.append(todoFormContainer);
 activeProjectDiv.appendChild(activeProjectHead);
+activeProjectDiv.appendChild(activeTodoDiv);
 activeProjectHead.appendChild(activeProjectTitle);
 
 changeActiveClass();
