@@ -30,14 +30,26 @@ const displayTodos = () => {
 
   todoDiv.setAttribute("id", "todo-div");
   todoDiv.classList.add("div-background");
+  todoTitle.setAttribute("id", "todo-title");
+  todoDueDate.setAttribute("id", "todo-due-date");
+  todoDescription.setAttribute("id", "todo-description");
+  todoPriority.setAttribute("id", "todo-priority");
+  todoNotes.setAttribute("id", "todo-notes");
+  todoComplete.setAttribute("id", "todo-complete");
+  todoTitle.classList.add("todo-properties");
+  todoDueDate.classList.add("todo-properties");
+  todoDescription.classList.add("todo-properties");
+  todoPriority.classList.add("todo-properties");
+  todoNotes.classList.add("todo-properties");
+  todoComplete.classList.add("todo-properties");
 
   for (let i = 0; i < projectsArray.length; i++) {
     if (projectsArray[i].active == true) {
       for (let t = 0; t < projectsArray[i].todos.length; t++) {
         todoTitle.textContent = projectsArray[i].todos[t].title;
-        todoDueDate.textContent = projectsArray[i].todos[t].dueDate;
+        todoDueDate.textContent = `Due: ${projectsArray[i].todos[t].dueDate}`;
         todoDescription.textContent = projectsArray[i].todos[t].description;
-        todoPriority.textContent = projectsArray[i].todos[t].priority;
+        todoPriority.textContent = `Priority: ${projectsArray[i].todos[t].priority}`;
         todoNotes.textContent = projectsArray[i].todos[t].notes;
         todoComplete.textContent = projectsArray[i].todos[t].complete;
 

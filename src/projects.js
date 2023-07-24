@@ -35,14 +35,4 @@ const createTodo = (
   newProject.push(newTodo);
 };
 
-// createTodo(
-//   "deadlift",
-//   "10-28-2023",
-//   "feet shoulder width apart and lift with hips.",
-//   "high",
-//   "stretch, try for 3x12",
-//   "incomplete",
-//   projectsArray[0].todos
-// );
-
 export { projectsArray, createProject, createTodo };
