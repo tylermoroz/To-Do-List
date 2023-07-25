@@ -60,7 +60,7 @@ todoPriorityLow.style.textShadow = "0 0 7px red";
 todoPriorityMid.textContent = "Mid";
 todoPriorityMid.style.textShadow = "0 0 7px yellow";
 todoPriorityHigh.textContent = "High";
-todoPriorityHigh.style.textShadow = "0 0 7px green";
+todoPriorityHigh.style.textShadow = "0 0 7px #39fc03";
 
 const todoNotesDiv = document.createElement("div");
 const todoNotesLabel = document.createElement("label");

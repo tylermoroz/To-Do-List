@@ -49,9 +49,24 @@ const displayTodos = () => {
         todoTitle.textContent = projectsArray[i].todos[t].title;
         todoDueDate.textContent = `Due: ${projectsArray[i].todos[t].dueDate}`;
         todoDescription.textContent = projectsArray[i].todos[t].description;
-        todoPriority.textContent = `Priority: ${projectsArray[i].todos[t].priority}`;
         todoNotes.textContent = projectsArray[i].todos[t].notes;
         todoComplete.textContent = projectsArray[i].todos[t].complete;
+
+        if (projectsArray[i].todos[t].priority == 1) {
+          todoDiv.style.border = "2px solid red";
+          todoDiv.style.boxShadow = "0 0 10px 5px red";
+          todoPriority.textContent = "Priority: Low";
+        } else if (projectsArray[i].todos[t].priority == 2) {
+          todoDiv.style.border = "2px solid yellow";
+          todoDiv.style.boxShadow = "0 0 10px 5px yellow";
+
+          todoPriority.textContent = "Priority: Mid";
+        } else if (projectsArray[i].todos[t].priority == 3) {
+          todoDiv.style.border = "2px solid #39fc03";
+          todoDiv.style.boxShadow = "0 0 10px 5px #39fc03";
+
+          todoPriority.textContent = "Priority: High";
+        }
 
         activeTodoDiv.appendChild(todoDiv);
         todoDiv.appendChild(todoTitle);
