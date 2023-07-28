@@ -19,14 +19,14 @@ const changeTitle = () => {
   }
 };
 
-const displayTodos = () => {
-  const todoDiv = document.createElement("div");
-  const todoTitle = document.createElement("p");
-  const todoDueDate = document.createElement("p");
-  const todoDescription = document.createElement("p");
-  const todoPriority = document.createElement("p");
-  const todoNotes = document.createElement("p");
-  const todoComplete = document.createElement("p");
+const displayTodos = (todo) => {
+  let todoDiv = document.createElement("div");
+  let todoTitle = document.createElement("p");
+  let todoDueDate = document.createElement("p");
+  let todoDescription = document.createElement("p");
+  let todoPriority = document.createElement("p");
+  let todoNotes = document.createElement("p");
+  let todoComplete = document.createElement("button");
 
   todoDiv.setAttribute("id", "todo-div");
   todoDiv.classList.add("div-background");
@@ -41,43 +41,50 @@ const displayTodos = () => {
   todoDescription.classList.add("todo-properties");
   todoPriority.classList.add("todo-properties");
   todoNotes.classList.add("todo-properties");
-  todoComplete.classList.add("todo-properties");
+  // todoComplete.classList.add("todo-properties");
 
   for (let i = 0; i < projectsArray.length; i++) {
     if (projectsArray[i].active == true) {
-      for (let t = 0; t < projectsArray[i].todos.length; t++) {
-        todoTitle.textContent = projectsArray[i].todos[t].title;
-        todoDueDate.textContent = `Due: ${projectsArray[i].todos[t].dueDate}`;
-        todoDescription.textContent = projectsArray[i].todos[t].description;
-        todoNotes.textContent = projectsArray[i].todos[t].notes;
-        todoComplete.textContent = projectsArray[i].todos[t].complete;
+      todoTitle.textContent = todo.title;
+      todoDueDate.textContent = `Due: ${todo.dueDate}`;
+      todoDescription.textContent = todo.description;
+      todoNotes.textContent = todo.notes;
+      todoComplete.textContent = "incomplete";
 
-        if (projectsArray[i].todos[t].priority == 1) {
-          todoDiv.style.border = "2px solid red";
-          todoDiv.style.boxShadow = "0 0 10px 5px red";
-          todoPriority.textContent = "Priority: Low";
-        } else if (projectsArray[i].todos[t].priority == 2) {
-          todoDiv.style.border = "2px solid yellow";
-          todoDiv.style.boxShadow = "0 0 10px 5px yellow";
-
-          todoPriority.textContent = "Priority: Mid";
-        } else if (projectsArray[i].todos[t].priority == 3) {
-          todoDiv.style.border = "2px solid #39fc03";
-          todoDiv.style.boxShadow = "0 0 10px 5px #39fc03";
-
-          todoPriority.textContent = "Priority: High";
-        }
-
-        activeTodoDiv.appendChild(todoDiv);
-        todoDiv.appendChild(todoTitle);
-        todoDiv.appendChild(todoDueDate);
-        todoDiv.appendChild(todoDescription);
-        todoDiv.appendChild(todoPriority);
-        todoDiv.appendChild(todoNotes);
-        todoDiv.appendChild(todoComplete);
+      if (todo.priority == 1) {
+        todoDiv.style.border = "2px solid red";
+        todoDiv.style.boxShadow = "0 0 10px 5px red";
+        todoPriority.textContent = "Priority: Low";
+      } else if (todo.priority == 2) {
+        todoDiv.style.border = "2px solid yellow";
+        todoDiv.style.boxShadow = "0 0 10px 5px yellow";
+        todoPriority.textContent = "Priority: Mid";
+      } else if (todo.priority == 3) {
+        todoDiv.style.border = "2px solid #39fc03";
+        todoDiv.style.boxShadow = "0 0 10px 5px #39fc03";
+        todoPriority.textContent = "Priority: High";
       }
     }
   }
+  activeTodoDiv.appendChild(todoDiv);
+  todoDiv.appendChild(todoTitle);
+  todoDiv.appendChild(todoDueDate);
+  todoDiv.appendChild(todoDescription);
+  todoDiv.appendChild(todoPriority);
+  todoDiv.appendChild(todoNotes);
+  todoDiv.appendChild(todoComplete);
+
+  todoComplete.addEventListener("click", (e) => {
+    if (todo.complete == false) {
+      todo.complete = true;
+      e.target.textContent = "complete";
+      console.log(projectsArray);
+    } else if (todo.complete == true) {
+      todo.complete = false;
+      e.target.textContent = "incomplete";
+      console.log(projectsArray);
+    }
+  });
 };
 
 export {

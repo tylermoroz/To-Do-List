@@ -1,3 +1,5 @@
+import { displayTodos } from "./activeProject";
+
 const projectsArray = [];
 
 const Project = (title, todos, active) => {
@@ -32,6 +34,7 @@ const createTodo = (
   newTodo.priority = priority;
   newTodo.notes = notes;
   newTodo.complete = complete;
+  displayTodos(newTodo);
   newProject.push(newTodo);
 };
 

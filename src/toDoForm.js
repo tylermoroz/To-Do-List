@@ -1,4 +1,4 @@
-import { displayTodos } from "./activeProject.js";
+// import { displayTodos } from "./activeProject.js";
 import { createTodo, projectsArray } from "./projects.js";
 
 const todoFormContainer = document.createElement("div");
@@ -70,13 +70,13 @@ todoNotesDiv.setAttribute("id", "todo-notes-div");
 todoNotesInput.setAttribute("rows", "5");
 todoNotesLabel.textContent = "Notes:";
 
-const todoCompleteDiv = document.createElement("div");
-const todoCompleteLabel = document.createElement("label");
-const todoCompleteInput = document.createElement("input");
-todoCompleteDiv.setAttribute("id", "todo-complete-div");
-todoCompleteDiv.classList.add("form-elements");
-todoCompleteLabel.textContent = "Complete";
-todoCompleteInput.setAttribute("type", "radio");
+// const todoCompleteDiv = document.createElement("div");
+// const todoCompleteLabel = document.createElement("label");
+// const todoCompleteInput = document.createElement("input");
+// todoCompleteDiv.setAttribute("id", "todo-complete-div");
+// todoCompleteDiv.classList.add("form-elements");
+// todoCompleteLabel.textContent = "Complete";
+// todoCompleteInput.setAttribute("type", "radio");
 
 const todoSubmitDiv = document.createElement("div");
 const todoSubmitBtn = document.createElement("button");
@@ -92,7 +92,7 @@ todoForm.appendChild(todoDueDateDiv);
 todoForm.appendChild(todoDescriptionDiv);
 todoForm.appendChild(todoPriorityDiv);
 todoForm.appendChild(todoNotesDiv);
-todoForm.appendChild(todoCompleteDiv);
+// todoForm.appendChild(todoCompleteDiv);
 todoForm.appendChild(todoSubmitDiv);
 todoTitleDiv.appendChild(todoTitleLabel);
 todoTitleDiv.appendChild(todoTitleInput);
@@ -108,8 +108,8 @@ todoPriorityLevels.appendChild(todoPriorityHigh);
 todoPriorityDiv.appendChild(todoPriorityInput);
 todoNotesDiv.appendChild(todoNotesLabel);
 todoNotesDiv.appendChild(todoNotesInput);
-todoCompleteDiv.appendChild(todoCompleteInput);
-todoCompleteDiv.appendChild(todoCompleteLabel);
+// todoCompleteDiv.appendChild(todoCompleteInput);
+// todoCompleteDiv.appendChild(todoCompleteLabel);
 todoSubmitDiv.appendChild(todoSubmitBtn);
 
 const pushToActiveProject = () => {
@@ -128,10 +128,10 @@ todoSubmitBtn.addEventListener("click", (event) => {
     todoDescriptionInput.value,
     todoPriorityInput.value,
     todoNotesInput.value,
-    todoCompleteInput.value,
+    false,
     pushToActiveProject()
   );
-  displayTodos();
+  // displayTodos();
   todoForm.reset();
   console.log(projectsArray);
 });
