@@ -1,4 +1,4 @@
-import { changeTitle } from "./activeProject.js";
+import { changeTitle, clearTodos, displayTodos } from "./activeProject.js";
 import { createProject, projectsArray } from "./projects.js";
 
 const projectFormDiv = document.createElement("div");
@@ -55,6 +55,7 @@ input.addEventListener("keypress", (e) => {
     projectName.classList.add("active");
     projectName.classList.add("project");
     changeTitle();
+    clearTodos();
     console.log(projectsArray);
   }
 });

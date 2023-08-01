@@ -19,17 +19,26 @@ const changeTitle = () => {
   }
 };
 
+const clearTodos = () => {
+  while (activeTodoDiv.hasChildNodes()) {
+    activeTodoDiv.firstChild.remove();
+  }
+};
+
 const displayTodos = (todo) => {
   let todoDiv = document.createElement("div");
+  let todoHeader = document.createElement("div");
   let todoTitle = document.createElement("p");
   let todoDueDate = document.createElement("p");
   let todoDescription = document.createElement("p");
   let todoPriority = document.createElement("p");
   let todoNotes = document.createElement("p");
+  let todoCompleteDiv = document.createElement("div");
   let todoComplete = document.createElement("button");
 
   todoDiv.setAttribute("id", "todo-div");
   todoDiv.classList.add("div-background");
+  todoHeader.setAttribute("id", "todo-header");
   todoTitle.setAttribute("id", "todo-title");
   todoDueDate.setAttribute("id", "todo-due-date");
   todoDescription.setAttribute("id", "todo-description");
@@ -41,7 +50,8 @@ const displayTodos = (todo) => {
   todoDescription.classList.add("todo-properties");
   todoPriority.classList.add("todo-properties");
   todoNotes.classList.add("todo-properties");
-  // todoComplete.classList.add("todo-properties");
+  todoCompleteDiv.setAttribute("id", "todo-button-div");
+  todoComplete.setAttribute("id", "todo-button");
 
   for (let i = 0; i < projectsArray.length; i++) {
     if (projectsArray[i].active == true) {
@@ -67,12 +77,14 @@ const displayTodos = (todo) => {
     }
   }
   activeTodoDiv.appendChild(todoDiv);
-  todoDiv.appendChild(todoTitle);
+  todoDiv.appendChild(todoHeader);
+  todoHeader.appendChild(todoTitle);
   todoDiv.appendChild(todoDueDate);
   todoDiv.appendChild(todoDescription);
   todoDiv.appendChild(todoPriority);
   todoDiv.appendChild(todoNotes);
-  todoDiv.appendChild(todoComplete);
+  todoDiv.appendChild(todoCompleteDiv);
+  todoCompleteDiv.appendChild(todoComplete);
 
   todoComplete.addEventListener("click", (e) => {
     if (todo.complete == false) {
@@ -94,4 +106,5 @@ export {
   changeTitle,
   activeTodoDiv,
   displayTodos,
+  clearTodos,
 };
