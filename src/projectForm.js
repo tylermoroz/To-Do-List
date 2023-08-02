@@ -66,8 +66,8 @@ const changeActiveClass = () => {
   projectList.addEventListener("click", (e) => {
     if (e.target.tagName == "P") {
       removeActiveClass();
+      clearTodos();
     }
-
     e.target.classList.add("active");
   });
 };
@@ -83,14 +83,13 @@ const removeActiveClass = () => {
 const activeProject = () => {
   const projectSelect = document.getElementById("projects-list-div");
   projectSelect.addEventListener("click", (e) => {
-    for (let i = 0; i < projectsArray.length; i++) {
+    for (let i = 0; i <= projectsArray.length; i++) {
       if (
         parseInt(projectsArray.indexOf(projectsArray[i])) ===
           parseInt(e.target.dataset.index) &&
         e.target.classList.contains("active")
       ) {
         projectsArray[i].active = true;
-
         console.log(projectsArray);
       } else if (
         parseInt(projectsArray.indexOf(projectsArray[i])) !==
@@ -99,9 +98,22 @@ const activeProject = () => {
       ) {
         projectsArray[i].active = false;
       }
+      displayActiveTodos(e, i);
     }
     changeTitle();
   });
 };
 
-export { projectFormDiv, changeActiveClass, activeProject };
+const displayActiveTodos = (e, i) => {
+  for (let n = 0; n < projectsArray[i].todos.length; n++) {
+    if (
+      parseInt(projectsArray.indexOf(projectsArray[i])) ===
+        parseInt(e.target.dataset.index) &&
+      e.target.classList.contains("active")
+    ) {
+      displayTodos(projectsArray[i].todos[n]);
+    }
+  }
+};
+
+export { projectFormDiv, changeActiveClass, activeProject, displayActiveTodos };
