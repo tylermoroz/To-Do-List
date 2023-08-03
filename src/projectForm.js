@@ -50,6 +50,7 @@ input.addEventListener("keypress", (e) => {
     projectListForm.reset();
     projectListForm.remove();
     projectListDiv.appendChild(projectName);
+    setActiveToFalse();
     createProject(projectName.textContent, [], true);
     removeActiveClass();
     projectName.classList.add("active");
@@ -67,9 +68,15 @@ const changeActiveClass = () => {
     if (e.target.tagName == "P") {
       removeActiveClass();
       clearTodos();
+      e.target.classList.add("active");
     }
-    e.target.classList.add("active");
   });
+};
+
+const setActiveToFalse = () => {
+  for (let i = 0; i < projectsArray.length; i++) {
+    projectsArray[i].active = false;
+  }
 };
 
 const removeActiveClass = () => {
@@ -83,22 +90,26 @@ const removeActiveClass = () => {
 const activeProject = () => {
   const projectSelect = document.getElementById("projects-list-div");
   projectSelect.addEventListener("click", (e) => {
-    for (let i = 0; i <= projectsArray.length; i++) {
+    for (let i = 0; i < projectsArray.length; i++) {
       if (
         parseInt(projectsArray.indexOf(projectsArray[i])) ===
           parseInt(e.target.dataset.index) &&
-        e.target.classList.contains("active")
+        e.target.classList.contains("active") &&
+        e.target.tagName == "P"
       ) {
         projectsArray[i].active = true;
         console.log(projectsArray);
       } else if (
         parseInt(projectsArray.indexOf(projectsArray[i])) !==
           parseInt(e.target.dataset.index) &&
-        e.target.classList.contains("active")
+        e.target.classList.contains("active") &&
+        e.target.tagName == "P"
       ) {
         projectsArray[i].active = false;
       }
-      displayActiveTodos(e, i);
+      if (e.target.tagName == "P") {
+        displayActiveTodos(e, i);
+      }
     }
     changeTitle();
   });
