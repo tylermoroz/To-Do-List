@@ -36,6 +36,7 @@ projectListForm.appendChild(input);
 addProjectBtn.addEventListener("click", () => {
   if (projectListDiv.querySelector(".project-form") == null) {
     projectListDiv.appendChild(projectListForm);
+    projectListDiv.scrollTop = projectListDiv.scrollHeight;
   }
 });
 
