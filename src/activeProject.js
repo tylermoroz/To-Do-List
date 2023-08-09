@@ -28,7 +28,10 @@ const clearTodos = () => {
 const displayTodos = (todo) => {
   let todoDiv = document.createElement("div");
   let todoHeader = document.createElement("div");
+  let todoTitleDiv = document.createElement("div");
   let todoTitle = document.createElement("p");
+  let deleteTodoDiv = document.createElement("div");
+  let deleteTodoBtn = document.createElement("button");
   let todoDueDate = document.createElement("p");
   let todoDescription = document.createElement("p");
   let todoPriority = document.createElement("p");
@@ -39,7 +42,10 @@ const displayTodos = (todo) => {
   todoDiv.setAttribute("id", "todo-div");
   todoDiv.classList.add("div-background");
   todoHeader.setAttribute("id", "todo-header");
+  todoTitleDiv.setAttribute("id", "todo-title-div");
   todoTitle.setAttribute("id", "todo-title");
+  deleteTodoDiv.setAttribute("id", "delete-todo-div");
+  deleteTodoBtn.setAttribute("id", "delete-todo-btn");
   todoDueDate.setAttribute("id", "todo-due-date");
   todoDescription.setAttribute("id", "todo-description");
   todoPriority.setAttribute("id", "todo-priority");
@@ -52,6 +58,8 @@ const displayTodos = (todo) => {
   todoNotes.classList.add("todo-properties");
   todoCompleteDiv.setAttribute("id", "todo-button-div");
   todoComplete.setAttribute("id", "todo-button");
+
+  deleteTodoBtn.textContent = "X";
 
   for (let i = 0; i < projectsArray.length; i++) {
     if (projectsArray[i].active == true) {
@@ -78,7 +86,10 @@ const displayTodos = (todo) => {
   }
   activeTodoDiv.appendChild(todoDiv);
   todoDiv.appendChild(todoHeader);
-  todoHeader.appendChild(todoTitle);
+  todoHeader.appendChild(todoTitleDiv);
+  todoHeader.appendChild(deleteTodoDiv);
+  todoTitleDiv.appendChild(todoTitle);
+  deleteTodoDiv.appendChild(deleteTodoBtn);
   todoDiv.appendChild(todoDueDate);
   todoDiv.appendChild(todoDescription);
   todoDiv.appendChild(todoPriority);
