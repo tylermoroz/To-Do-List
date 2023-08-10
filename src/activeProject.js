@@ -39,25 +39,25 @@ const displayTodos = (todo) => {
   let todoCompleteDiv = document.createElement("div");
   let todoComplete = document.createElement("button");
 
-  todoDiv.setAttribute("id", "todo-div");
+  todoDiv.classList.add("todo-div");
   todoDiv.classList.add("div-background");
-  todoHeader.setAttribute("id", "todo-header");
-  todoTitleDiv.setAttribute("id", "todo-title-div");
-  todoTitle.setAttribute("id", "todo-title");
-  deleteTodoDiv.setAttribute("id", "delete-todo-div");
-  deleteTodoBtn.setAttribute("id", "delete-todo-btn");
-  todoDueDate.setAttribute("id", "todo-due-date");
-  todoDescription.setAttribute("id", "todo-description");
-  todoPriority.setAttribute("id", "todo-priority");
-  todoNotes.setAttribute("id", "todo-notes");
-  todoComplete.setAttribute("id", "todo-complete");
+  todoHeader.classList.add("todo-header");
+  todoTitleDiv.classList.add("todo-title-div");
+  todoTitle.classList.add("todo-title");
+  deleteTodoDiv.classList.add("delete-todo-div");
+  deleteTodoBtn.classList.add("delete-todo-btn");
+  todoDueDate.classList.add("todo-due-date");
+  todoDescription.classList.add("todo-description");
+  todoPriority.classList.add("todo-priority");
+  todoNotes.classList.add("todo-notes");
+  todoComplete.classList.add("todo-complete");
   todoTitle.classList.add("todo-properties");
   todoDueDate.classList.add("todo-properties");
   todoDescription.classList.add("todo-properties");
   todoPriority.classList.add("todo-properties");
   todoNotes.classList.add("todo-properties");
-  todoCompleteDiv.setAttribute("id", "todo-button-div");
-  todoComplete.setAttribute("id", "todo-button");
+  todoCompleteDiv.classList.add("todo-button-div");
+  todoComplete.classList.add("todo-button");
 
   deleteTodoBtn.textContent = "X";
 
@@ -106,6 +106,18 @@ const displayTodos = (todo) => {
       todo.complete = false;
       e.target.textContent = "incomplete";
       console.log(projectsArray);
+    }
+  });
+
+  deleteTodoBtn.addEventListener("click", (e) => {
+    let buttonDiv = e.target.parentNode;
+    let todoHead = buttonDiv.parentNode;
+    let todoToRemove = todoHead.parentNode;
+    todoToRemove.remove();
+
+    for (let i = 0; i < projectsArray.length; i++) {
+      let thisTodo = projectsArray[i].todos.indexOf(todo);
+      projectsArray[i].todos.splice(thisTodo, 1);
     }
   });
 };
