@@ -38,6 +38,8 @@ const displayTodos = (todo) => {
   let todoNotes = document.createElement("p");
   let todoCompleteDiv = document.createElement("div");
   let todoComplete = document.createElement("button");
+  let expandTodoDiv = document.createElement("div");
+  let expandTodoBtn = document.createElement("button");
 
   todoDiv.classList.add("todo-div");
   todoDiv.classList.add("div-background");
@@ -58,8 +60,11 @@ const displayTodos = (todo) => {
   todoNotes.classList.add("todo-properties");
   todoCompleteDiv.classList.add("todo-button-div");
   todoComplete.classList.add("todo-button");
+  expandTodoDiv.classList.add("expand-todo-div");
+  expandTodoBtn.classList.add("expand-todo-button");
 
   deleteTodoBtn.textContent = "X";
+  expandTodoBtn.textContent = "▾";
 
   for (let i = 0; i < projectsArray.length; i++) {
     if (projectsArray[i].active == true) {
@@ -92,10 +97,10 @@ const displayTodos = (todo) => {
   deleteTodoDiv.appendChild(deleteTodoBtn);
   todoDiv.appendChild(todoDueDate);
   todoDiv.appendChild(todoDescription);
-  todoDiv.appendChild(todoPriority);
-  todoDiv.appendChild(todoNotes);
   todoDiv.appendChild(todoCompleteDiv);
   todoCompleteDiv.appendChild(todoComplete);
+  todoDiv.appendChild(expandTodoDiv);
+  expandTodoDiv.appendChild(expandTodoBtn);
 
   todoComplete.addEventListener("click", (e) => {
     if (todo.complete == false) {
@@ -118,6 +123,22 @@ const displayTodos = (todo) => {
     for (let i = 0; i < projectsArray.length; i++) {
       let thisTodo = projectsArray[i].todos.indexOf(todo);
       projectsArray[i].todos.splice(thisTodo, 1);
+    }
+  });
+
+  expandTodoBtn.addEventListener("click", () => {
+    if (todoDiv.querySelector(".todo-priority") === null) {
+      todoCompleteDiv.remove();
+      expandTodoDiv.remove();
+      todoDiv.appendChild(todoPriority);
+      todoDiv.appendChild(todoNotes);
+      todoDiv.appendChild(todoCompleteDiv);
+      todoDiv.appendChild(expandTodoDiv);
+      expandTodoBtn.textContent = "▴";
+    } else {
+      todoPriority.remove();
+      todoNotes.remove();
+      expandTodoBtn.textContent = "▾";
     }
   });
 };
