@@ -140,14 +140,29 @@ body {
 }
 
 #active-todo-div {
-  height: 100%;
-  width: 100%;
   display: grid;
   grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
-  grid-template-columns: repeat(auto-fill, 250px);
+  grid-template-columns: repeat(auto-fit, 250px);
   gap: 20px;
   padding: 20px;
   overflow-y: scroll;
+}
+
+#active-todo-div::-webkit-scrollbar {
+  width: 5px;
+}
+
+#active-todo-div:-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.13);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+#active-todo-div::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 166, 0, 0.541);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.13);
 }
 
 .todo-div {
@@ -156,6 +171,7 @@ body {
   display: flex;
   flex-direction: column;
   padding: 10px;
+  margin: 20px;
 }
 
 .todo-header {
