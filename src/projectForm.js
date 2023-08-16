@@ -42,6 +42,17 @@ addProjectBtn.addEventListener("click", () => {
 
 input.addEventListener("keypress", (e) => {
   const projectName = document.createElement("p");
+  const projectContainer = document.createElement("div");
+  const projectNameDiv = document.createElement("div");
+  const deleteProjectBtn = document.createElement("button");
+  const deleteProjectBtnDiv = document.createElement("div");
+
+  deleteProjectBtn.textContent = "x";
+  deleteProjectBtn.classList.add("delete-project-button");
+  projectContainer.classList.add("project-container");
+  projectNameDiv.classList.add("project-name-div");
+  deleteProjectBtnDiv.classList.add("delete-project-button-div");
+
   if (e.code === "Enter") {
     e.preventDefault();
     projectName.textContent = document.querySelector(".project-input").value;
@@ -50,7 +61,11 @@ input.addEventListener("keypress", (e) => {
     }
     projectListForm.reset();
     projectListForm.remove();
-    projectListDiv.appendChild(projectName);
+    projectListDiv.appendChild(projectContainer);
+    projectContainer.appendChild(projectNameDiv);
+    projectContainer.appendChild(deleteProjectBtnDiv);
+    projectNameDiv.appendChild(projectName);
+    deleteProjectBtnDiv.appendChild(deleteProjectBtn);
     setActiveToFalse();
     createProject(projectName.textContent, [], true);
     removeActiveClass();
