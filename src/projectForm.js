@@ -99,7 +99,10 @@ const removeActiveClass = () => {
   const children = document.getElementById("projects-list-div").children;
 
   for (let i = 0; i < children.length; i++) {
-    children[i].classList.remove("active");
+    const nestedChild = children[i];
+    const grandChild = nestedChild.firstChild;
+    const greatGrandChild = grandChild.firstChild;
+    greatGrandChild.classList.remove("active");
   }
 };
 
