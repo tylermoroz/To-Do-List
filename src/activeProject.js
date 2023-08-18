@@ -121,8 +121,11 @@ const displayTodos = (todo) => {
     todoToRemove.remove();
 
     for (let i = 0; i < projectsArray.length; i++) {
-      let thisTodo = projectsArray[i].todos.indexOf(todo);
-      projectsArray[i].todos.splice(thisTodo, 1);
+      if (projectsArray[i].active == true) {
+        let thisTodo = projectsArray[i].todos.indexOf(todo);
+        projectsArray[i].todos.splice(thisTodo, 1);
+        return;
+      }
     }
   });
 
