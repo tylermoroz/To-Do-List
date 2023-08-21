@@ -57,7 +57,7 @@ input.addEventListener("keypress", (e) => {
     e.preventDefault();
     projectName.textContent = document.querySelector(".project-input").value;
     for (let i = 0; i < projectListDiv.children.length; i++) {
-      projectName.setAttribute("data-index", i);
+      projectContainer.setAttribute("data-index", i);
     }
     projectListForm.reset();
     projectListForm.remove();
@@ -75,6 +75,14 @@ input.addEventListener("keypress", (e) => {
     clearTodos();
     console.log(projectsArray);
   }
+
+  deleteProjectBtn.addEventListener("click", () => {
+    const projects = projectListDiv.children;
+    projectContainer.remove();
+    for (let i = 0; i < projects.length; i++) {
+      projects[i].setAttribute("data-index", i);
+    }
+  });
 });
 
 const changeActiveClass = () => {
@@ -112,7 +120,7 @@ const activeProject = () => {
     for (let i = 0; i < projectsArray.length; i++) {
       if (
         parseInt(projectsArray.indexOf(projectsArray[i])) ===
-          parseInt(e.target.dataset.index) &&
+          parseInt(e.target.closest(".project-container").dataset.index) &&
         e.target.classList.contains("active") &&
         e.target.tagName == "P"
       ) {
@@ -120,7 +128,7 @@ const activeProject = () => {
         console.log(projectsArray);
       } else if (
         parseInt(projectsArray.indexOf(projectsArray[i])) !==
-          parseInt(e.target.dataset.index) &&
+          parseInt(e.target.closest(".project-container").dataset.index) &&
         e.target.classList.contains("active") &&
         e.target.tagName == "P"
       ) {
@@ -131,6 +139,7 @@ const activeProject = () => {
       }
     }
     changeTitle();
+    console.log(projectsArray);
   });
 };
 
@@ -138,7 +147,7 @@ const displayActiveTodos = (e, i) => {
   for (let n = 0; n < projectsArray[i].todos.length; n++) {
     if (
       parseInt(projectsArray.indexOf(projectsArray[i])) ===
-        parseInt(e.target.dataset.index) &&
+        parseInt(e.target.closest(".project-container").dataset.index) &&
       e.target.classList.contains("active")
     ) {
       displayTodos(projectsArray[i].todos[n]);
