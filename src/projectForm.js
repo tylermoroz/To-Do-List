@@ -76,11 +76,19 @@ input.addEventListener("keypress", (e) => {
     console.log(projectsArray);
   }
 
-  deleteProjectBtn.addEventListener("click", () => {
+  deleteProjectBtn.addEventListener("click", (e) => {
     const projects = projectListDiv.children;
     projectContainer.remove();
     for (let i = 0; i < projects.length; i++) {
       projects[i].setAttribute("data-index", i);
+    }
+    for (let i = 0; i < projectsArray.length; i++) {
+      if (
+        parseInt(projectsArray.indexOf(projectsArray[i])) ===
+        parseInt(e.target.closest(".project-container").dataset.index)
+      ) {
+        projectsArray.splice(i, 1);
+      }
     }
   });
 });
@@ -119,18 +127,18 @@ const activeProject = () => {
   projectSelect.addEventListener("click", (e) => {
     for (let i = 0; i < projectsArray.length; i++) {
       if (
+        e.target.tagName == "P" &&
         parseInt(projectsArray.indexOf(projectsArray[i])) ===
           parseInt(e.target.closest(".project-container").dataset.index) &&
-        e.target.classList.contains("active") &&
-        e.target.tagName == "P"
+        e.target.classList.contains("active")
       ) {
         projectsArray[i].active = true;
         console.log(projectsArray);
       } else if (
+        e.target.tagName == "P" &&
         parseInt(projectsArray.indexOf(projectsArray[i])) !==
           parseInt(e.target.closest(".project-container").dataset.index) &&
-        e.target.classList.contains("active") &&
-        e.target.tagName == "P"
+        e.target.classList.contains("active")
       ) {
         projectsArray[i].active = false;
       }
