@@ -110,17 +110,21 @@ const pushToActiveProject = () => {
 
 todoSubmitBtn.addEventListener("click", (event) => {
   event.preventDefault();
-  createTodo(
-    todoTitleInput.value,
-    todoDueDateInput.value,
-    todoDescriptionInput.value,
-    todoPriorityInput.value,
-    todoNotesInput.value,
-    false,
-    pushToActiveProject()
-  );
-  todoForm.reset();
-  console.log(projectsArray);
+  for (let i = 0; i < projectsArray.length; i++) {
+    if (projectsArray.length > 0 && projectsArray[i].active == true) {
+      createTodo(
+        todoTitleInput.value,
+        todoDueDateInput.value,
+        todoDescriptionInput.value,
+        todoPriorityInput.value,
+        todoNotesInput.value,
+        false,
+        pushToActiveProject()
+      );
+      todoForm.reset();
+      console.log(projectsArray);
+    }
+  }
 });
 
 export { todoFormContainer };

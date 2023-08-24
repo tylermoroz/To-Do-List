@@ -1,4 +1,9 @@
-import { changeTitle, clearTodos, displayTodos } from "./activeProject.js";
+import {
+  activeProjectTitle,
+  changeTitle,
+  clearTodos,
+  displayTodos,
+} from "./activeProject.js";
 import { createProject, projectsArray } from "./projects.js";
 
 const projectFormDiv = document.createElement("div");
@@ -89,6 +94,14 @@ input.addEventListener("keypress", (e) => {
       ) {
         projectsArray.splice(i, 1);
       }
+    }
+    if (
+      e.target.parentNode.previousElementSibling.children[0].classList.contains(
+        "active"
+      )
+    ) {
+      clearTodos();
+      activeProjectTitle.textContent = "";
     }
   });
 });
