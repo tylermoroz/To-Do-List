@@ -87,6 +87,16 @@ const displayTodos = (todo) => {
         todoDiv.style.boxShadow = "0 0 10px 5px #39fc03";
         todoPriority.textContent = "Priority: High";
       }
+
+      if (todo.complete == false) {
+        todoComplete.style.border = "2px solid red";
+        todoComplete.style.boxShadow = "red 0px 0px 5px 1px";
+        todoComplete.style.background = "red";
+      } else if (todo.complete == true) {
+        todoComplete.style.border = "2px solid #05db05";
+        todoComplete.style.boxShadow = "#05db05 0px 0px 5px 1px";
+        todoComplete.style.background = "#05db05";
+      }
     }
   }
   activeTodoDiv.appendChild(todoDiv);
@@ -106,10 +116,16 @@ const displayTodos = (todo) => {
     if (todo.complete == false) {
       todo.complete = true;
       e.target.textContent = "complete";
+      e.target.style.border = "2px solid #05db05";
+      e.target.style.boxShadow = "#05db05 0px 0px 5px 1px";
+      e.target.style.background = "#05db05";
       console.log(projectsArray);
     } else if (todo.complete == true) {
       todo.complete = false;
       e.target.textContent = "incomplete";
+      e.target.style.border = "2px solid red";
+      e.target.style.boxShadow = "red 0px 0px 5px 1px";
+      e.target.style.background = "red";
       console.log(projectsArray);
     }
   });
