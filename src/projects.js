@@ -14,7 +14,6 @@ const createProject = (title, todos, active) => {
   newProject.active = active;
   projectsArray.push(newProject);
   localStorageProject(newProject);
-  console.log(localStorage);
 };
 
 const Todo = (title, dueDate, description, priority, notes, complete) => {
@@ -39,7 +38,7 @@ const createTodo = (
   newTodo.complete = complete;
   displayTodos(newTodo);
   newProject.push(newTodo);
-  localStorageTodos(newTodo.title, newTodo);
+  localStorageTodos(newTodo);
 };
 
 export { projectsArray, createProject, createTodo };

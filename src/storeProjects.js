@@ -14,8 +14,12 @@ const localStorageProject = (newProject) => {
   localStorage.setItem("projects", JSON.stringify(storedProjects));
 };
 
-const localStorageTodos = (name, todo) => {
-  localStorage.setItem(`${name}`, JSON.stringify(todo));
+const localStorageTodos = (newTodo) => {
+  const storeNewTodo = newTodo;
+  const storedTodos = JSON.parse(localStorage.getItem("todos"));
+  storedTodos.push(storeNewTodo);
+  console.log(storedTodos);
+  localStorage.setItem("todos", JSON.stringify(storedTodos));
 };
 
 export { onloadStorage, localStorageProject, localStorageTodos };
