@@ -12,6 +12,7 @@ import {
   activeTodoDiv,
 } from "./activeProject.js";
 import { todoFormContainer } from "./toDoForm";
+import { onloadStorage } from "./storeProjects";
 
 const content = document.querySelector("#content");
 content.appendChild(projectFormDiv);
@@ -23,6 +24,7 @@ activeProjectHead.appendChild(activeProjectTitle);
 
 changeActiveClass();
 activeProject();
+onloadStorage();
 
 console.log(projectsArray);
 

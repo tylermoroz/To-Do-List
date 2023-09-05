@@ -1,4 +1,5 @@
-import { displayTodos } from "./activeProject";
+import { displayTodos } from "./activeProject.js";
+import { localStorageProject, localStorageTodos } from "./storeProjects.js";
 
 const projectsArray = [];
 
@@ -12,6 +13,8 @@ const createProject = (title, todos, active) => {
   newProject.todos = [...todos];
   newProject.active = active;
   projectsArray.push(newProject);
+  localStorageProject(newProject);
+  console.log(localStorage);
 };
 
 const Todo = (title, dueDate, description, priority, notes, complete) => {
@@ -36,6 +39,7 @@ const createTodo = (
   newTodo.complete = complete;
   displayTodos(newTodo);
   newProject.push(newTodo);
+  localStorageTodos(newTodo.title, newTodo);
 };
 
 export { projectsArray, createProject, createTodo };
