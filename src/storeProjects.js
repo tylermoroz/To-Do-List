@@ -2,7 +2,7 @@ const onloadStorage = () => {
   window.addEventListener("load", () => {
     if (localStorage.getItem("projects") === null) {
       localStorage.setItem("projects", "[]");
-      localStorage.setItem("todos", "[]");
+      // localStorage.setItem("todos", "[]");
     }
   });
 };
@@ -15,11 +15,22 @@ const localStorageProject = (newProject) => {
 };
 
 const localStorageTodos = (newTodo) => {
-  const storeNewTodo = newTodo;
-  const storedTodos = JSON.parse(localStorage.getItem("todos"));
-  storedTodos.push(storeNewTodo);
-  console.log(storedTodos);
-  localStorage.setItem("todos", JSON.stringify(storedTodos));
+  const storedTodos = JSON.parse(localStorage.getItem("projects"))[0].todos;
+  storedTodos.push(newTodo);
+  localStorage.setItem(
+    "projects",
+    `{"title":"project","todos":${JSON.stringify(
+      storedTodos
+    )},"active":${true}}`
+  );
 };
+
+// const postToProjectTodos = (todo) => {
+//   for (const key of JSON.parse(localStorage.getItem("projects"))) {
+//     if (key.active === true) {
+//       key.todos.push(todo);
+//     }
+//   }
+// };
 
 export { onloadStorage, localStorageProject, localStorageTodos };

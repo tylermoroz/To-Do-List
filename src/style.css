@@ -14,7 +14,6 @@ body {
   grid-template-rows: 1.5fr 2fr;
   grid-auto-flow: row;
   gap: 15px;
-  background: rgb(249, 197, 3);
   background: linear-gradient(
     21deg,
     rgba(249, 197, 3, 1) 0%,
