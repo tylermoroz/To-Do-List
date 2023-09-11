@@ -11,7 +11,7 @@ const localStorageProject = (newProject) => {
   const storeNewProject = newProject;
   const storedProjects = JSON.parse(localStorage.getItem("projects"));
   storedProjects.push(storeNewProject);
-  localStorage.setItem("projects", JSON.stringify(storedProjects));
+  localStorage.setItem("projects", [JSON.stringify(storedProjects)]);
 };
 
 const localStorageTodos = (newTodo) => {
@@ -19,9 +19,9 @@ const localStorageTodos = (newTodo) => {
   storedTodos.push(newTodo);
   localStorage.setItem(
     "projects",
-    `{"title":"project","todos":${JSON.stringify(
+    `[{"title":"project","todos":${JSON.stringify(
       storedTodos
-    )},"active":${true}}`
+    )},"active":${true}}]`
   );
 };
 
