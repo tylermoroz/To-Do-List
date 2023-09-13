@@ -82,6 +82,7 @@ input.addEventListener("keypress", (e) => {
   }
 
   deleteProjectBtn.addEventListener("click", (e) => {
+    const storedProjects = JSON.parse(localStorage.getItem("projects"));
     const projects = projectListDiv.children;
     projectContainer.remove();
     for (let i = 0; i < projects.length; i++) {
@@ -93,6 +94,16 @@ input.addEventListener("keypress", (e) => {
         parseInt(e.target.closest(".project-container").dataset.index)
       ) {
         projectsArray.splice(i, 1);
+      }
+      for (let i = 0; i <= storedProjects.length; i++) {
+        if (
+          parseInt(e.target.closest(".project-container").dataset.index) ===
+          parseInt(storedProjects.indexOf(storedProjects[i]))
+        ) {
+          storedProjects.splice(i, 1);
+          localStorage.setItem("projects", [JSON.stringify(storedProjects)]);
+          return;
+        }
       }
     }
     if (
