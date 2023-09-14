@@ -3,6 +3,7 @@ import {
   changeTitle,
   clearTodos,
   displayTodos,
+  activeTodoDiv,
 } from "./activeProject.js";
 import { createProject, projectsArray } from "./projects.js";
 
@@ -85,9 +86,11 @@ input.addEventListener("keypress", (e) => {
     const storedProjects = JSON.parse(localStorage.getItem("projects"));
     const projects = projectListDiv.children;
     projectContainer.remove();
+
     for (let i = 0; i < projects.length; i++) {
       projects[i].setAttribute("data-index", i);
     }
+
     for (let i = 0; i < projectsArray.length; i++) {
       if (
         parseInt(projectsArray.indexOf(projectsArray[i])) ===
@@ -95,6 +98,7 @@ input.addEventListener("keypress", (e) => {
       ) {
         projectsArray.splice(i, 1);
       }
+
       for (let i = 0; i <= storedProjects.length; i++) {
         if (
           parseInt(e.target.closest(".project-container").dataset.index) ===
@@ -183,6 +187,9 @@ const displayActiveTodos = (e, i) => {
       e.target.classList.contains("active")
     ) {
       displayTodos(projectsArray[i].todos[n]);
+      for (let t = 0; t < activeTodoDiv.children.length; t++) {
+        activeTodoDiv.children[t].setAttribute("data-todo-index", t);
+      }
     }
   }
 };

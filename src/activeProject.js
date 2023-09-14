@@ -113,6 +113,7 @@ const displayTodos = (todo) => {
   expandTodoDiv.appendChild(expandTodoBtn);
 
   todoComplete.addEventListener("click", (e) => {
+    // const storedProjects = JSON.parse(localStorage.getItem("projects"));
     if (todo.complete == false) {
       todo.complete = true;
       e.target.textContent = "complete";
@@ -128,13 +129,22 @@ const displayTodos = (todo) => {
       e.target.style.background = "red";
       console.log(projectsArray);
     }
+    // for(let i = 0; i < storedProjects.length; i++){
+    //   const storedTodos = storedProjects[i].todos;
+    //   if(e.target.)
+    // }
   });
 
   deleteTodoBtn.addEventListener("click", (e) => {
     let buttonDiv = e.target.parentNode;
     let todoHead = buttonDiv.parentNode;
     let todoToRemove = todoHead.parentNode;
+    const todoList = activeTodoDiv.children;
     todoToRemove.remove();
+
+    for (let i = 0; i < todoList.length; i++) {
+      todoList[i].setAttribute("data-todo-index", i);
+    }
 
     for (let i = 0; i < projectsArray.length; i++) {
       if (projectsArray[i].active == true) {

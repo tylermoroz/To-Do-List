@@ -1,4 +1,5 @@
 import { createTodo, projectsArray } from "./projects.js";
+import { activeTodoDiv } from "./activeProject.js";
 
 const todoFormContainer = document.createElement("div");
 todoFormContainer.setAttribute("id", "todo-form-container");
@@ -124,6 +125,9 @@ todoSubmitBtn.addEventListener("click", (event) => {
       todoForm.reset();
       console.log(projectsArray);
     }
+  }
+  for (let i = 0; i < activeTodoDiv.children.length; i++) {
+    activeTodoDiv.children[i].setAttribute("data-todo-index", i);
   }
 });
 
