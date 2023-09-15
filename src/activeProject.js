@@ -113,7 +113,7 @@ const displayTodos = (todo) => {
   expandTodoDiv.appendChild(expandTodoBtn);
 
   todoComplete.addEventListener("click", (e) => {
-    // const storedProjects = JSON.parse(localStorage.getItem("projects"));
+    const storedProjects = JSON.parse(localStorage.getItem("projects"));
     if (todo.complete == false) {
       todo.complete = true;
       e.target.textContent = "complete";
@@ -129,10 +129,37 @@ const displayTodos = (todo) => {
       e.target.style.background = "red";
       console.log(projectsArray);
     }
-    // for(let i = 0; i < storedProjects.length; i++){
-    //   const storedTodos = storedProjects[i].todos;
-    //   if(e.target.)
-    // }
+    for (let i = 0; i < storedProjects.length; i++) {
+      const storedTodos = storedProjects[i].todos;
+      for (let t = 0; t < storedTodos.length; t++) {
+        if (
+          parseInt(e.target.closest(".todo-div").dataset.todoIndex) ===
+          parseInt(storedTodos.indexOf(storedTodos[t]))
+        ) {
+          if (e.target.textContent == "complete") {
+            storedTodos[t].complete = true;
+            localStorage.setItem(
+              "projects",
+              `[{"title":${JSON.stringify(
+                storedProjects[i].title
+              )},"todos":${JSON.stringify(storedTodos)},"active":${
+                storedProjects[i].active
+              }}]`
+            );
+          } else {
+            storedTodos[t].complete = false;
+            localStorage.setItem(
+              "projects",
+              `[{"title":${JSON.stringify(
+                storedProjects[i].title
+              )},"todos":${JSON.stringify(storedTodos)},"active":${
+                storedProjects[i].active
+              }}]`
+            );
+          }
+        }
+      }
+    }
   });
 
   deleteTodoBtn.addEventListener("click", (e) => {
