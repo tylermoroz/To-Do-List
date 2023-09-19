@@ -78,6 +78,7 @@ input.addEventListener("keypress", (e) => {
     projectName.classList.add("active");
     projectName.classList.add("project");
     changeTitle();
+    storageProjectActiveStatus();
     clearTodos();
     console.log(projectsArray);
   }
@@ -97,19 +98,22 @@ input.addEventListener("keypress", (e) => {
         parseInt(e.target.closest(".project-container").dataset.index)
       ) {
         projectsArray.splice(i, 1);
-      }
-
-      for (let i = 0; i <= storedProjects.length; i++) {
-        if (
-          parseInt(e.target.closest(".project-container").dataset.index) ===
-          parseInt(storedProjects.indexOf(storedProjects[i]))
-        ) {
-          storedProjects.splice(i, 1);
-          localStorage.setItem("projects", [JSON.stringify(storedProjects)]);
-          return;
-        }
+        console.log(projectsArray);
       }
     }
+
+    for (let i = 0; i < storedProjects.length; i++) {
+      if (
+        parseInt(e.target.closest(".project-container").dataset.index) ===
+        parseInt(storedProjects.indexOf(storedProjects[i]))
+      ) {
+        storedProjects.splice(i, 1);
+        localStorage.setItem("projects", [JSON.stringify(storedProjects)]);
+        return;
+      }
+      storageProjectActiveStatus();
+    }
+
     if (
       e.target.parentNode.previousElementSibling.children[0].classList.contains(
         "active"
@@ -174,9 +178,26 @@ const activeProject = () => {
         displayActiveTodos(e, i);
       }
     }
+    storageProjectActiveStatus();
     changeTitle();
     console.log(projectsArray);
   });
+};
+
+const storageProjectActiveStatus = () => {
+  const storedProjects = JSON.parse(localStorage.getItem("projects"));
+
+  for (let i = 0; i < projectsArray.length; i++) {
+    for (let p = 0; p < storedProjects.length; p++) {
+      if (
+        parseInt(projectsArray.indexOf(projectsArray[i])) ===
+        parseInt(storedProjects.indexOf(storedProjects[p]))
+      ) {
+        storedProjects[p].active = projectsArray[i].active;
+        localStorage.setItem("projects", [JSON.stringify(storedProjects)]);
+      }
+    }
+  }
 };
 
 const displayActiveTodos = (e, i) => {
