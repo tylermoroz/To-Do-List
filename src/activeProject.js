@@ -154,10 +154,25 @@ const displayTodos = (todo) => {
     let todoHead = buttonDiv.parentNode;
     let todoToRemove = todoHead.parentNode;
     const todoList = activeTodoDiv.children;
+    const storedProjects = JSON.parse(localStorage.getItem("projects"));
+    const clickedTodoIndex = parseInt(
+      e.target.closest(".todo-div").dataset.todoIndex
+    );
+    const activeProject = storedProjects.find(
+      (project) => project.active === true
+    );
     todoToRemove.remove();
 
     for (let i = 0; i < todoList.length; i++) {
       todoList[i].setAttribute("data-todo-index", i);
+    }
+
+    if (activeProject) {
+      if (activeProject.todos[clickedTodoIndex]) {
+        activeProject.todos.splice(clickedTodoIndex, 1);
+
+        localStorage.setItem("projects", JSON.stringify(storedProjects));
+      }
     }
 
     for (let i = 0; i < projectsArray.length; i++) {
