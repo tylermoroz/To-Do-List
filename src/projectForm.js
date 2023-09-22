@@ -215,4 +215,10 @@ const displayActiveTodos = (e, i) => {
   }
 };
 
-export { projectFormDiv, changeActiveClass, activeProject, displayActiveTodos };
+export {
+  projectFormDiv,
+  changeActiveClass,
+  activeProject,
+  displayActiveTodos,
+  projectListDiv,
+};
