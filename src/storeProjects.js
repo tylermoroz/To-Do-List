@@ -1,3 +1,5 @@
+import { projectListDiv } from "./projectForm.js";
+
 const onloadStorage = () => {
   // Add a "load" event listener to the window
   window.addEventListener("load", () => {
@@ -5,6 +7,38 @@ const onloadStorage = () => {
     if (localStorage.getItem("projects") === null) {
       // If it's null or empty, set it to an empty array as a JSON string
       localStorage.setItem("projects", "[]");
+    } else {
+      const storedProjects = JSON.parse(localStorage.getItem("projects"));
+
+      for (let i = 0; i < storedProjects.length; i++) {
+        const projectName = document.createElement("p");
+        const projectContainer = document.createElement("div");
+        const projectNameDiv = document.createElement("div");
+        const deleteProjectBtn = document.createElement("button");
+        const deleteProjectBtnDiv = document.createElement("div");
+
+        deleteProjectBtn.textContent = "x";
+        deleteProjectBtn.classList.add("delete-project-button");
+        projectContainer.classList.add("project-container");
+        projectNameDiv.classList.add("project-name-div");
+        deleteProjectBtnDiv.classList.add("delete-project-button-div");
+        projectName.textContent = storedProjects[i].title;
+        for (let t = 0; t < projectListDiv.children.length; t++) {
+          projectContainer.setAttribute("data-index", t);
+        }
+        projectListDiv.appendChild(projectContainer);
+        projectContainer.appendChild(projectNameDiv);
+        projectContainer.appendChild(deleteProjectBtnDiv);
+        projectNameDiv.appendChild(projectName);
+        deleteProjectBtnDiv.appendChild(deleteProjectBtn);
+        projectName.classList.add("project");
+        if (
+          projectName.textContent == storedProjects[i].title &&
+          storedProjects[i].active === true
+        ) {
+          projectName.classList.add("active");
+        }
+      }
     }
   });
 };
