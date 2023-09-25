@@ -84,44 +84,7 @@ input.addEventListener("keypress", (e) => {
   }
 
   deleteProjectBtn.addEventListener("click", (e) => {
-    const storedProjects = JSON.parse(localStorage.getItem("projects"));
-    const projects = projectListDiv.children;
-    projectContainer.remove();
-
-    for (let i = 0; i < projects.length; i++) {
-      projects[i].setAttribute("data-index", i);
-    }
-
-    for (let i = 0; i < projectsArray.length; i++) {
-      if (
-        parseInt(projectsArray.indexOf(projectsArray[i])) ===
-        parseInt(e.target.closest(".project-container").dataset.index)
-      ) {
-        projectsArray.splice(i, 1);
-        console.log(projectsArray);
-      }
-    }
-
-    for (let i = 0; i < storedProjects.length; i++) {
-      if (
-        parseInt(e.target.closest(".project-container").dataset.index) ===
-        parseInt(storedProjects.indexOf(storedProjects[i]))
-      ) {
-        storedProjects.splice(i, 1);
-        localStorage.setItem("projects", [JSON.stringify(storedProjects)]);
-        return;
-      }
-      storageProjectActiveStatus();
-    }
-
-    if (
-      e.target.parentNode.previousElementSibling.children[0].classList.contains(
-        "active"
-      )
-    ) {
-      clearTodos();
-      activeProjectTitle.textContent = "";
-    }
+    deleteProject(e);
   });
 });
 
@@ -135,6 +98,47 @@ const changeActiveClass = () => {
       e.target.classList.add("active");
     }
   });
+};
+
+const deleteProject = (e) => {
+  const storedProjects = JSON.parse(localStorage.getItem("projects"));
+  const projects = projectListDiv.children;
+  projectContainer.remove();
+
+  for (let i = 0; i < projects.length; i++) {
+    projects[i].setAttribute("data-index", i);
+  }
+
+  for (let i = 0; i < projectsArray.length; i++) {
+    if (
+      parseInt(projectsArray.indexOf(projectsArray[i])) ===
+      parseInt(e.target.closest(".project-container").dataset.index)
+    ) {
+      projectsArray.splice(i, 1);
+      console.log(projectsArray);
+    }
+  }
+
+  for (let i = 0; i < storedProjects.length; i++) {
+    if (
+      parseInt(e.target.closest(".project-container").dataset.index) ===
+      parseInt(storedProjects.indexOf(storedProjects[i]))
+    ) {
+      storedProjects.splice(i, 1);
+      localStorage.setItem("projects", [JSON.stringify(storedProjects)]);
+      return;
+    }
+    storageProjectActiveStatus();
+  }
+
+  if (
+    e.target.parentNode.previousElementSibling.children[0].classList.contains(
+      "active"
+    )
+  ) {
+    clearTodos();
+    activeProjectTitle.textContent = "";
+  }
 };
 
 const setActiveToFalse = () => {
@@ -221,4 +225,5 @@ export {
   activeProject,
   displayActiveTodos,
   projectListDiv,
+  deleteProject,
 };

@@ -41,4 +41,4 @@ const createTodo = (
   localStorageTodos(newTodo);
 };
 
-export { projectsArray, createProject, createTodo };
+export { projectsArray, createProject, createTodo, Project };

@@ -1,4 +1,5 @@
-import { projectListDiv } from "./projectForm.js";
+import { projectListDiv, deleteProject } from "./projectForm.js";
+import { Project, projectsArray } from "./projects.js";
 
 const onloadStorage = () => {
   // Add a "load" event listener to the window
@@ -23,7 +24,7 @@ const onloadStorage = () => {
         projectNameDiv.classList.add("project-name-div");
         deleteProjectBtnDiv.classList.add("delete-project-button-div");
         projectName.textContent = storedProjects[i].title;
-        for (let t = 0; t < projectListDiv.children.length; t++) {
+        for (let t = 0; t <= projectListDiv.children.length; t++) {
           projectContainer.setAttribute("data-index", t);
         }
         projectListDiv.appendChild(projectContainer);
@@ -38,6 +39,14 @@ const onloadStorage = () => {
         ) {
           projectName.classList.add("active");
         }
+        deleteProjectBtn.addEventListener("click", (e) => {
+          deleteProject(e);
+        });
+        createStoredProjects(
+          storedProjects[i].title,
+          storedProjects[i].todos,
+          storedProjects[i].active
+        );
       }
     }
   });
@@ -54,6 +63,14 @@ const localStorageProject = (newProject) => {
 
   // Update the "projects" key in local storage with the modified projects array
   localStorage.setItem("projects", [JSON.stringify(storedProjects)]);
+};
+
+const createStoredProjects = (title, todos, active) => {
+  let newProject = Project();
+  newProject.title = title;
+  newProject.todos = [...todos];
+  newProject.active = active;
+  projectsArray.push(newProject);
 };
 
 const localStorageTodos = (newTodo) => {
