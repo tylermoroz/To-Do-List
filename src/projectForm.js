@@ -103,7 +103,7 @@ const changeActiveClass = () => {
 const deleteProject = (e) => {
   const storedProjects = JSON.parse(localStorage.getItem("projects"));
   const projects = projectListDiv.children;
-  projectContainer.remove();
+  e.target.closest(".project-container").remove();
 
   for (let i = 0; i < projects.length; i++) {
     projects[i].setAttribute("data-index", i);
