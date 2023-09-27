@@ -1,3 +1,4 @@
+import { changeTitle, displayTodos, activeTodoDiv } from "./activeProject.js";
 import { projectListDiv, deleteProject } from "./projectForm.js";
 import { Project, projectsArray } from "./projects.js";
 
@@ -47,10 +48,22 @@ const onloadStorage = () => {
           storedProjects[i].todos,
           storedProjects[i].active
         );
+        changeTitle();
+      }
+      for (let i = 0; i < projectsArray.length; i++) {
+        for (let n = 0; n < projectsArray[i].todos.length; n++) {
+          if (projectsArray[i].active === true) {
+            displayTodos(projectsArray[i].todos[n]);
+            for (let t = 0; t < activeTodoDiv.children.length; t++) {
+              activeTodoDiv.children[t].setAttribute("data-todo-index", t);
+            }
+          }
+        }
       }
     }
   });
 };
+
 const localStorageProject = (newProject) => {
   // Store the new project data in a variable
   const storeNewProject = newProject;
