@@ -37,7 +37,7 @@ const displayTodos = (todo) => {
   let todoPriority = document.createElement("p");
   let todoNotes = document.createElement("p");
   let todoCompleteDiv = document.createElement("div");
-  let todoComplete = document.createElement("button");
+  let todoCompleteBtn = document.createElement("button");
   let expandTodoDiv = document.createElement("div");
   let expandTodoBtn = document.createElement("button");
 
@@ -52,14 +52,14 @@ const displayTodos = (todo) => {
   todoDescription.classList.add("todo-description");
   todoPriority.classList.add("todo-priority");
   todoNotes.classList.add("todo-notes");
-  todoComplete.classList.add("todo-complete");
+  todoCompleteBtn.classList.add("todo-complete");
   todoTitle.classList.add("todo-properties");
   todoDueDate.classList.add("todo-properties");
   todoDescription.classList.add("todo-properties");
   todoPriority.classList.add("todo-properties");
   todoNotes.classList.add("todo-properties");
   todoCompleteDiv.classList.add("todo-button-div");
-  todoComplete.classList.add("todo-button");
+  todoCompleteBtn.classList.add("todo-button");
   expandTodoDiv.classList.add("expand-todo-div");
   expandTodoBtn.classList.add("expand-todo-button");
 
@@ -72,7 +72,7 @@ const displayTodos = (todo) => {
       todoDueDate.textContent = `Due: ${todo.dueDate}`;
       todoDescription.textContent = todo.description;
       todoNotes.textContent = todo.notes;
-      todoComplete.textContent = "incomplete";
+      todoCompleteBtn.textContent = "incomplete";
 
       if (todo.priority == 1) {
         todoDiv.style.border = "2px solid red";
@@ -89,13 +89,15 @@ const displayTodos = (todo) => {
       }
 
       if (todo.complete == false) {
-        todoComplete.style.border = "2px solid red";
-        todoComplete.style.boxShadow = "red 0px 0px 5px 1px";
-        todoComplete.style.background = "red";
+        todoCompleteBtn.textContent = "incomplete";
+        todoCompleteBtn.style.border = "2px solid red";
+        todoCompleteBtn.style.boxShadow = "red 0px 0px 5px 1px";
+        todoCompleteBtn.style.background = "red";
       } else if (todo.complete == true) {
-        todoComplete.style.border = "2px solid #05db05";
-        todoComplete.style.boxShadow = "#05db05 0px 0px 5px 1px";
-        todoComplete.style.background = "#05db05";
+        todoCompleteBtn.textContent = "complete";
+        todoCompleteBtn.style.border = "2px solid #05db05";
+        todoCompleteBtn.style.boxShadow = "#05db05 0px 0px 5px 1px";
+        todoCompleteBtn.style.background = "#05db05";
       }
     }
   }
@@ -108,11 +110,11 @@ const displayTodos = (todo) => {
   todoDiv.appendChild(todoDueDate);
   todoDiv.appendChild(todoDescription);
   todoDiv.appendChild(todoCompleteDiv);
-  todoCompleteDiv.appendChild(todoComplete);
+  todoCompleteDiv.appendChild(todoCompleteBtn);
   todoDiv.appendChild(expandTodoDiv);
   expandTodoDiv.appendChild(expandTodoBtn);
 
-  todoComplete.addEventListener("click", (e) => {
+  todoCompleteBtn.addEventListener("click", (e) => {
     const storedProjects = JSON.parse(localStorage.getItem("projects"));
     const clickedTodoIndex = parseInt(
       e.target.closest(".todo-div").dataset.todoIndex
